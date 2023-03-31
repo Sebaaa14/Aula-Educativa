@@ -1,0 +1,14 @@
+ul.list-unstyled a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+nav{
+    background-color: rgb(236, 204, 235);
+}
+
+.btn {
+    background-color:rgb(151, 100, 152);
+    color:white;
+    border-color:black
+}
