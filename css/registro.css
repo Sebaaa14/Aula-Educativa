@@ -2,3 +2,8 @@
     box-shadow: 0 0 2rem 0 rgba(145, 52, 131, 0.15)!important;
     border-radius: .375rem!important;
 }
+
+.fondo-imagen{
+    background-position: center center;
+    background-size: cover;
+}
