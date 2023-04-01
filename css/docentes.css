@@ -1,0 +1,32 @@
+.colorCustom{
+    background-color: #ECCCEB;
+}
+
+card-group{
+    text-align: center;
+    font-size: 30px;
+}
+
+.card-img-top{
+    height: 300px;
+}
+
+.logo{
+    width: 10vh;
+}
+
+body{
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  footer{
+    position: absolute;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+  }
+
+.row-padding-bottom{
+    padding-bottom: 30px;
+}

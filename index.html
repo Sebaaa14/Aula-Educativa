@@ -18,50 +18,54 @@
     </head>
     
     <body>
-
-
         <!-- Header -->
         <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-
-            <div class="container-fluid" style="color:white;">
-              <div class="row mx-auto">
-                <div class="col">
-                  texto1
+            <div class="container justify-content-center mx-auto" >
+                <div class="col" style="width: 33%; flex-basis: 0;">
+                  <h4>Aula Educativa</h4>
                 </div>
-                <div class="col">
-                  <a class="navbar-brand mx-auto" href="login.html">
-                    <img src="imagenes/logo1.png" width="220" height="50" class="d-inline-block align-top" alt="Logo">
+                <div class="col" style="width: 33%; flex-basis: 0;">
+                  <a  href="login.html">
+                    <img src="imagenes/logo1.png" width="15%" height="auto" class="d-inline-block align-top" alt="Logo">
                   </a>
                 </div>
-                <div class="col">
-                  texto3
+                <div class="col" style="width: 33%; flex-basis: 0;">
+                  <button class="btn btn-outline-success" type="submit" onclick="window.location.href='login.html'">Iniciar Sesión</button>
                 </div>
-              </div>
             </div>
-            
-
           </nav>
         </header>
 
         <div class = "imagen" style = "background-image: url('imagenes/3.png');">
           <!-- Section texto -->
           <section>
-                <!--Crear columnas y filas con boostrap-->
+                <!--Fila 1-->
+ 
                 <div class = "container-fluid text-center">
                   <div class = "row">
-                    <div class = "col my-3">
+                    <div class = "col-1 my-5">
+                    </div>
+                    <div class = "col-4 my-5 fondo-columna">
                       <h1 >Programa de Apoyo para Estudiantes</h1>
-                      <p>Esta sección podrás encontrar toda la Información relacionada con las actividades, notas, materiales de los Alumnos, así como el Sistema académico, alumnos destacados y generaciones de alumnos de años anteriores.</p>
+                      <p>Esta sección podrás encontrar toda la Información relacionada con las actividades,
+                        notas, materiales de los Alumnos, así como el Sistema académico, alumnos destacados
+                        y generaciones de alumnos de años anteriores.</p>
                     </div>
-                    <div class = "col my-3">
-                        <h1>Titulo_2</h1>
-                        <p>Esta sección podrás encontrar toda la Información relacionada con las actividades, notas, materiales de los Alumnos, así como el Sistema académico, alumnos destacados y generaciones de alumnos de años anteriores.</p>
-                    </div>
-                    <div class = "col my-3">
-                      <h1>Titulo_3</h1>
-                      <p>Esta sección podrás encontrar toda la Información relacionada con las actividades, notas, materiales de los Alumnos, así como el Sistema académico, alumnos destacados y generaciones de alumnos de años anteriores.</p>
                   </div>
+                </div>
+                <!--Fila 2-->
+                <div class = "container-fluid text-center">
+                  <div class = "row">
+                    <div class = "col-7 my-4">
+                    </div>
+                  
+                    <div class = "col-4 my-4 fondo-columna">
+                      <h1>Inicia sesión para acceder a la información</h1>
+                      <p>Para poder obtener el acceso a todo el contenido disponible en esta plataforma web,
+                        deberás iniciar sesión previamente, si aún no cuentas con un perfil puedes crearlo
+                        en nuestro apartado de <a href="registrarse.html" class="registro-button">Registro</a></p>
+                    </div>
                   </div>
                 </div>
           </section>

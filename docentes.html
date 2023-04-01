@@ -10,67 +10,198 @@
         <!-- Estilos Boostrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <!-- Estilos Propios -->
-        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/docentes.css">
         <link rel="stylesheet" href="css/estilos.css">
     </head>
 
     <body>
 
-        <!-- Cabecera -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light">
+    <!-- Cabecera -->
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light colorCustom">
+        <a title="Inicio" href="perfil.html"><img class="logo" src="imagenes/estudiante.png" alt="1132"></a>
+        <x><a href="perfil.html" style="color:black">Perfil-Alumno</x></a>
+          <div class="container-fluid"> 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item fs-5">
+                  <a class="nav-link active" href="mainpage.html">Inicio</a>
+                </li>
+                <li class="nav-item fs-5">
+                  <a class="nav-link active" aria-current="page" href="calendario.html">Calendario</a>
+                </li>
+                <li class="nav-item fs-5">
+                  <a class="nav-link active" href="students.html">Participantes del curso</a>
+                </li>
+                <li class="nav-item dropdown fs-5">
+                  <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Más
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="grades.html">Notas</a></li>
+                    <li><a class="dropdown-item" href="horario.html">Horario</a></li>
+                    <li><a class="dropdown-item" href="docentes.html">Docentes</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                  </ul>
+                </li>
+                <li class="nav-item fs-5">
+                  <a class="nav-link active" href="login.html">Acceso</a>
+                </li>
+                <li class="nav-item fs-5">
+                  <a class="nav-link active" href="index.html">Salir</a>
+                </li>
+              </ul>
+              
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      <header>
 
-          <a title="Inicio" href="mainpage.html"><img class="logo" src="imagenes/logo1.png" alt="1132"></a>
-            <div class="container-fluid"> 
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item fs-5">
-                    <a class="nav-link active" aria-current="page" href="#">Calendario</a>
-                  </li>
-                  <li class="nav-item fs-5">
-                    <a class="nav-link active" href="students.html">Alumnos</a>
-                  </li>
-                  <li class="nav-item dropdown fs-5">
-                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Más
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="grades.html">Notas</a></li>
-                      <li><a class="dropdown-item" href="horario.html">Horario</a></li>
-                      <li><a class="dropdown-item" href="#">Docentes</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item fs-5">
-                    <a class="nav-link active" href="login.html">Acceso</a>
-                  </li>
-                  <li class="nav-item fs-5">
-                    <a class="nav-link active" href="index.html">Salir</a>
-                  </li>
-                </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
+   
+          <!-- Section Home -->
+          <div class="card-group">
+
+            <!-- Fila1 -->
+            <div class="row mx-auto py-4">
+              <div class="col-4">
+                <div class="card">
+                  <img src="imagenes/docente1.jpeg" class="card-img-top" alt="1">
+                  <div class="card-body">
+                    <h5 class="card-title"><b>Profesora de Ciencias</b></h5>
+                    <p  class="card-text">Julieta Rivas</p>
+                    <c class="card-text">Correo:<a href="julieta.rivas@mail.edu.cl" style="color:black">julieta.rivas@mail.edu.cl</c></a>
+                    <p class="card-text">Horario de atención: Lunes a Miercoles 14:30-15:30</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="card">
+                  <img src="imagenes/docente2.jpeg" class="card-img-top" alt="2">
+                  <div class="card-body">
+                      <h5 class="card-title"><b>Profesora de Matemáticas</b></h5>
+                      <p class="card-text">María Castellana<p>
+                      <c class="card-text">Correo:<a href="julieta.rivas@mail.edu.cl" style="color:black">maria.rivas@mail.edu.cl</c></a>
+                      <p class="card-text">Horario de atención: Lunes a Jueves 14:30-15:30<x>
+                  </div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="card">
+                  <img src="imagenes/docente3.jpeg" class="card-img-top" alt="3">
+                  <div class="card-body">
+                      <h5 class="card-title"><b>Profesor de Historia</b></h5>
+                      <p class="card-text">Mario Orellana<p>
+                      <c class="card-text">Correo:<a href="mario.orellana@mail.edu.cl" style="color:black">mario.orellana@mail.edu.cl</c></a>
+                      <p class="card-text">Horario de atención: Lunes a Jueves 12:30-13:30<p>
+                  </div>
+                </div>
               </div>
             </div>
-          </nav>
 
-          <!-- Section Home -->
-          <section>
-            <h4>Docentes</h4>
-            <div class="profesores">
-              <img src="docente1/imagenes" class="rounded float-start" alt = "1">
-              <img src="docente2/imagenes" class="rounded float-start" alt = "2">
-              <img src="docente3/imagenes" class="rounded float-start" alt = "3">
+            <!-- Fila2 -->
+             <!-- Profesor 4 -->
+            <div class="row mx-auto py-4">
+              <div class="col-4">
+                <div class="card">
+                  <img src="imagenes/docente6.jpeg" class="card-img-top" alt="4">
+                  <div class="card-body">
+                      <h5 class="card-title"><b>Profesora de Filosofia</b></h5>
+                      <p class="card-text">Josefa Zamudio<p>
+                        <c class="card-text">Correo:<a href="josefa.zamudio@mail.edu.cl" style="color:black">josefa.zamudio@mail.edu.cl</c></a>
+                      <p class="card-text">Horario de atención: Lunes 16:30-18:30<p>
+                  </div>
+                </div>
+              </div>
+         
 
+              <!-- Profesor 5 -->
+             <div class="col-4">
+              <div class="card">
+                <img src="imagenes/docente5.jpeg" class="card-img-top" alt="5">
+                <div class="card-body">
+                    <h5 class="card-title"><b>Profesor de Educación Física</b></h5>
+                    <p class="card-text">Juan José Mora<p>
+                    <c class="card-text">Correo:<a href="juanjose.mora@mail.edu.cl" style="color:black">juanjose.mora@mail.edu.cl</c></a>
+                    <p class="card-text">Horario de atención: Lunes y Martes 14:30-15:30<p>
+                </div>
+              </div>
+             </div>
+            
+             <!-- Profesor 6 -->
+             <div class="col-4">
+              <div class="card">
+                <img src="imagenes/docente4.jpeg" class="card-img-top" alt="6">
+                <div class="card-body">
+                    <h5 class="card-title"><b>Profesor de Biología</b></h5>
+                    <p class="card-text">Nicolás Castellón<p>
+                    <c class="card-text">Correo:<a href="nicolas.castellon@mail.edu.cl" style="color:black">nicolas.castellon@mail.edu.cl</c></a>
+                    <p class="card-text">Horario de atención: Martes a Jueves 14:30-15:30<p>
+                </div>
+              </div>
+             </div>
+
+          </div>
+
+            <!-- Fila3 -->
+            <div class="row mx-auto py-4 row-padding-bottom">
+              <!-- Profesor 7 -->
+              <div class="col-4">
+                <div class="card">
+                  <img src="imagenes/docente7.jpeg" class="card-img-top" alt="7">
+                  <div class="card-body">
+                      <h5 class="card-title"><b>Profesora de Física</b></h5>
+                      <p class="card-text">Juliana Valdivieso<p>
+                      <c class="card-text">Correo:<a href="juliana.valdivieso@mail.edu.cl" style="color:black">juliana.valdivieso@mail.edu.cl</c></a>
+                      <p class="card-text">Horario de atención: Jueves 13:00-15:30<p>
+                  </div>
+                </div>
+              </div>
+              <!-- Profesor 8 -->
+              <div class="col-4">
+                <div class="card">
+                  <img src="imagenes/docente8.jpeg" class="card-img-top" alt="8">
+                  <div class="card-body">
+                      <h5 class="card-title"><b>Profesora de Artes Visuales</b></h5>
+                      <p class="card-text">Salomé Cortés<p>
+                      <c class="card-text">Correo:<a href="salome.cortes@mail.edu.cl" style="color:black">salome.cortes@mail.edu.cl</c></a>
+                      <p class="card-text">Horario de atención: Martes a Viernes 17:00-18:30<p>
+                  </div>
+                </div>            
+              </div>
+              <!-- Profesor 9 -->
+              <div class="col-4">
+                <div class="card">
+                  <img src="imagenes/docente9.jpeg" class="card-img-top" alt="9">
+                  <div class="card-body">
+                      <h5 class="card-title"><b>Profesora de Tecnología</b></h5>
+                      <p class="card-text">Miranda Colen<p>
+                      <c class="card-text">Correo:<a href="miranda.colen@s@mail.edu.cl">miranda.colen@@mail.edu.cl</c></a>
+                      <p class="card-text">Horario de atención: Lunes a Viernes 14:30-15:30<p>
+                  </div>
+                </div>
+              </div>
+              
             </div>
-          </section>
+            
+            
+           
+           
+          </div> 
+            
+          </div>
+          </div>
+            
+      
 
           <!-- Pie de Pagina -->
-          <footer class="footer">
+          <footer>
             <div class="container-fluid" style="background-color:rgb(236, 204, 235);">
               <div class="row">
                 <div class="col-sm-4 col-md-4 col-lg-4">
@@ -93,7 +224,7 @@
                   <a href="+56992614075">+56992614075</a>
                   <br>
                   Email:
-                  <a href="comunidad.educativa@gmail.com">comunidad.educativa@gmail.com</a>
+                  <a href="comunidad.educativa@mail.edu.cl">comunidad.educativa@mail.edu.cl</a>
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4">
                   <h4>Derechos de autor</h4>
