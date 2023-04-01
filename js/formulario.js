@@ -106,7 +106,7 @@ formulario.addEventListener('submit', (e) => {
 	const terminos = document.getElementById('terminos');
 	if(campos.apoderado && campos.rutApoderado && campos.nombre && campos.curso && campos.password && campos.correo && campos.telefono && campos.rut ){
 		formulario.reset();
-		document.location.href = "index.html";
+		document.location.href = "mainpage.html";
 	} else {
 		document.getElementById('formulario_mensaje').classList.add('formulario_mensaje-activo');
 	}
