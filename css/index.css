@@ -1,33 +1,36 @@
-.imagen{
+.imagen {
     background-position: center center;
     background-size: cover;
-    min-height: 90vh;
+    min-height: 99vh;
 }
 
 footer {
-    color:white;
+    color: white;
 }
 
-footer a{
-    color:rgb(212, 251, 255);
+footer a {
+    color: rgb(212, 251, 255);
 }
 
-header nav{
-    color:white; 
-    text-align:center;
+header nav {
+    color: white;
+    text-align: center;
 }
 
 .btn {
-    background-color:rgb(151, 100, 152);
-    color:white !important;
-    border-color:rgb(255, 255, 255) !important;
+    background-color: rgb(151, 100, 152);
+    color: white !important;
+    border-color: rgb(255, 255, 255) !important;
 }
 
-.registro-button{
-    font-size:180%; font-weight:600; color:green; background-color: rgba(222, 220, 220,0.8);
+.registro-button {
+    font-size: 180%;
+    font-weight: 600;
+    color: green;
+    background-color: rgba(222, 220, 220, 0.8);
 }
 
-.fondo-columna{
+.fondo-columna {
     background-color: rgba(216, 216, 216, 0.8);
     border-radius: 7%;
 }

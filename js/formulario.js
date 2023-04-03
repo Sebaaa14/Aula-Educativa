@@ -2,14 +2,14 @@ const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input');
 
 const expresiones = {
-	apoderado: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, 
+	apoderado: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
 	rut: /^[0-9]+[-]{1}[0-9kK]{1}$/,
 	rutApoderado: /^[0-9]+[-]{1}[0-9kK]{1}$/,
-	password: /^.{6,10}$/, 
+	password: /^.{6,10}$/,
 	curso: /^[1-8]+[º]{1}/,
 	correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-	telefono: /^\d{9}$/ 
+	telefono: /^\d{9}$/
 }
 
 const campos = {
@@ -18,7 +18,7 @@ const campos = {
 	password: false,
 	correo: false,
 	telefono: false,
-	rutApoderado:false,
+	rutApoderado: false,
 	curso: false,
 	rut: false
 }
@@ -27,37 +27,37 @@ const validarFormulario = (e) => {
 	switch (e.target.name) {
 		case "apoderado":
 			validarCampo(expresiones.apoderado, e.target, 'apoderado');
-		break;
+			break;
 		case "rutApoderado":
 			validarCampo(expresiones.rutApoderado, e.target, 'rutApoderado');
-		break;
+			break;
 		case "nombre":
 			validarCampo(expresiones.nombre, e.target, 'nombre');
-		break;
+			break;
 		case "curso":
 			validarCampo(expresiones.curso, e.target, 'curso');
-		break;
+			break;
 		case "password":
 			validarCampo(expresiones.password, e.target, 'password');
 			validarPassword2();
-		break;
+			break;
 		case "password2":
 			validarPassword2();
-		break;
+			break;
 		case "correo":
 			validarCampo(expresiones.correo, e.target, 'correo');
-		break;
+			break;
 		case "telefono":
 			validarCampo(expresiones.telefono, e.target, 'telefono');
-		break;
+			break;
 		case "rut":
 			validarCampo(expresiones.rut, e.target, 'rut');
-		break;
+			break;
 	}
 }
 
 const validarCampo = (expresion, input, campo) => {
-	if(expresion.test(input.value)){
+	if (expresion.test(input.value)) {
 		document.getElementById(`grupo_${campo}`).classList.remove('formulario_grupo-incorrecto');
 		document.getElementById(`grupo_${campo}`).classList.add('formulario_grupo-correcto');
 		document.querySelector(`#grupo_${campo} i`).classList.add('fa-check-circle');
@@ -78,7 +78,7 @@ const validarPassword2 = () => {
 	const inputPassword1 = document.getElementById('password');
 	const inputPassword2 = document.getElementById('password2');
 
-	if(inputPassword1.value !== inputPassword2.value){
+	if (inputPassword1.value !== inputPassword2.value) {
 		document.getElementById(`grupo_password2`).classList.add('formulario_grupo-incorrecto');
 		document.getElementById(`grupo_password2`).classList.remove('formulario_grupo-correcto');
 		document.querySelector(`#grupo_password2 i`).classList.add('fa-times-circle');
@@ -100,11 +100,11 @@ inputs.forEach((input) => {
 	input.addEventListener('blur', validarFormulario);
 });
 
+
 formulario.addEventListener('submit', (e) => {
 	e.preventDefault();
 
-	const terminos = document.getElementById('terminos');
-	if(campos.apoderado && campos.rutApoderado && campos.nombre && campos.curso && campos.password && campos.correo && campos.telefono && campos.rut ){
+	if (campos.apoderado && campos.rutApoderado && campos.nombre && campos.curso && campos.password && campos.correo && campos.telefono && campos.rut) {
 		formulario.reset();
 		document.location.href = "mainpage.html";
 	} else {
