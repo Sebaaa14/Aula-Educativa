@@ -1,8 +1,8 @@
 Proyecto Ingenieria Web
 
--Javier Andaur Fariña
--Nathalia Trigo Guerra
--Sebastián Valdés 
+-Javier Andaur Fariña 20.783.734-2
+-Nathalia Trigo Guerra 20.919.493-7
+-Sebastián Valdés Aguilera 20.986.948-9
 
 Funcionalidades:
 
@@ -16,3 +16,5 @@ Funcionalidades:
 8.- Visualizar el horario del estudiante.
 9.- Permitir la visualización de una página principal.
 10.- Visualizar el perfil del estudiante ingresado con sus datos personales.
+
+Imagenes del prototipo en la carpeta "prototipos".
