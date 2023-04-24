@@ -4,8 +4,16 @@
     min-height: 99vh;
 }
 
-footer {
-    color: white;
+.footer_index {
+    position: relative !important;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    color: white; 
 }
 
 footer a {
