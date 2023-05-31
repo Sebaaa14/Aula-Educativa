@@ -1,0 +1,18 @@
+.imagen {
+    background-image: url("/assets/fondos/fondo_sin_registrar.png");
+    background-position: center center;
+    background-size: cover;
+    min-height: 99vh;
+}
+
+.registro-button {      
+    font-size: 180%;
+    font-weight: 600;
+    color: rgb(96, 137, 96);
+    background-color: rgba(222, 220, 220, 0.8);
+}
+
+.fondo-columna {
+    background-color: rgba(216, 216, 216, 0.8);
+    border-radius: 7%;
+}
