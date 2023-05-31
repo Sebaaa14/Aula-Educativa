@@ -16,6 +16,14 @@ const routes: Routes = [
   //{path:'',component:},
   {path:'',component:InicioNoRegistradoComponent},
   {path:'registrate',component:RegistrateComponent},
+  {path:'calendario',component:CalendarioUsuarioComponent},
+  {path:'docentes',component:DocentesComponent},
+  {path:'horario',component:HorarioUsuarioComponent},
+  {path:'home',component:InicioRegistradoComponent},
+  {path:'notas',component:NotasUsuarioComponent},
+  {path:'olvidaste-contrasena',component:OlvidasteContrasenaComponent},
+  {path:'participantes',component:ParticipantesCursoComponent},
+  {path:'perfil',component:PerfilUsuarioComponent},
   {path:'iniciar-sesion',component:IniciarSesionComponent}
 ];
 
