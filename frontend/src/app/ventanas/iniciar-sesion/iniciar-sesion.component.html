@@ -5,11 +5,11 @@
         <div class="card">
           <div class="card-body">
             <h3 class="card-title text-center">Inicio de sesión</h3>
-            <form action="" id="formulario">
+            <form [formGroup]="userForm" id="formulario">
               <div class="formulario_grupo" id="grupo_rut">
                 <label for="rut">Rut Alumno</label>
                 <div class="formulario_grupo-input">
-                  <input type="text" class="formulario_input" name="rut" id="rut" placeholder="12345678-9">
+                  <input type="text" class="formulario_input" formControlName="usuario" name="rut" id="rut" placeholder="12345678-9">
                   <p class="formulario_validacion-estado fas fa-times-circle"></p>
                 </div>
                 <p class="formulario_input-error">Ingrese un rut: 12345678-9.</p>
@@ -18,10 +18,13 @@
               <div class="formulario_grupo" id="grupo_password">
                 <label for="password">Contraseña</label>
                 <div class="formulario_grupo-input">
-                  <input type="password" class="formulario_input" name="password" id="password" placeholder="********">
+                  <input type="password" class="formulario_input" formControlName="contrasena" name="password" id="password" placeholder="********">
                   <p class="formulario_validacion-estado fas fa-times-circle"></p>
                 </div>
-                <p class="formulario_input-error">Ingrese una contraseña entre 6-10 caracteres.</p>
+                <p *ngIf="
+                userForm.get('contrasena')?.invalid &&
+                userForm.get('contrasena')?.dirty
+            "class="formulario_input-error">Ingrese una contraseña entre 6-10 caracteres.</p>
               </div>
 
               <div class="formulario_mensaje" id="formulario_mensaje">
@@ -29,7 +32,7 @@
               </div>
 
               <div class="formulario_grupo formulario_grupo-btn-enviar">
-                <button type="submit" class=" btn btn-primary btn-block">Iniciar sesión</button>
+                <button type="submit" [disabled]="userForm.invalid" class=" btn btn-primary btn-block">Iniciar sesión</button>
               </div>
             </form>
             <div class="registrate">
