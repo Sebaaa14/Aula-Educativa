@@ -32,7 +32,7 @@
               </div>
 
               <div class="formulario_grupo formulario_grupo-btn-enviar">
-                <button type="submit" [disabled]="userForm.invalid" class=" btn btn-primary btn-block">Iniciar sesión</button>
+                <button type="submit" [disabled]="userForm.invalid" class=" btn btn-primary btn-block" (click)="iniciarSesion()" (keyup.enter)="iniciarSesion()">Iniciar sesión</button>
               </div>
             </form>
             <div class="registrate">
