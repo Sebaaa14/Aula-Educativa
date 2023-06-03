@@ -6,11 +6,10 @@
       <div class="card">
         <img src="imagenes/docente1.jpeg" class="card-img-top" alt="1">
         <div class="card-body">
-          <h5 class="card-title"><b>Profesora de Ciencias</b></h5>
-          <p class="card-text">Julieta Rivas</p>
-          <p>class="card-text">Correo: <a href="julieta.rivas@mail.edu.cl"
-              style="color:black">julieta.rivas@mail.edu.cl</a></p>
-          <p class="card-text">Horario de atención: Lunes a Miercoles 14:30-15:30</p>
+          <h5 class="card-title"><b>{{ profesores[0].titulo }}</b></h5>
+          <p class="card-text">{{ profesores[0].nombre }}</p>
+          <p class="card-text">Correo: <a href="mailto:{{ profesores[0].correo }}" style="color:black">{{ profesores[0].correo }}</a></p>
+          <p class="card-text">Horario de atención: {{ profesores[0].horario }}</p>
         </div>
       </div>
     </div>
