@@ -3,136 +3,15 @@
   <!-- Fila1 -->
   <div class="row mx-auto py-4">
     <div class="col-4 d-flex align-items-stretch">
-      <div class="card">
-        <img src="imagenes/docente1.jpeg" class="card-img-top" alt="1">
+      <div class="card" *ngFor="let profesor of profesores">
         <div class="card-body">
-          <h5 class="card-title"><b>{{ profesores[0].titulo }}</b></h5>
-          <p class="card-text">{{ profesores[0].nombre }}</p>
-          <p class="card-text">Correo: <a href="mailto:{{ profesores[0].correo }}" style="color:black">{{ profesores[0].correo }}</a></p>
-          <p class="card-text">Horario de atención: {{ profesores[0].horario }}</p>
+          <h5 class="card-title"><b>{{ profesor.titulo }}</b></h5>
+          <p class="card-text">{{ profesor.nombre }}</p>
+          <p class="card-text">Correo: <a href="mailto:{{ profesor.correo }}" style="color:black">{{ profesor.correo }}</a></p>
+          <p class="card-text">Horario de atención: {{ profesor.horario }}</p>
         </div>
       </div>
-    </div>
-    <div class="col-4 d-flex align-items-stretch">
-      <div class="card">
-        <img src="imagenes/docente2.jpeg" class="card-img-top" alt="2">
-        <div class="card-body">
-          <h5 class="card-title"><b>Profesora de Matemáticas</b></h5>
-          <p class="card-text">María Castellana
-          <p class="card-text">Correo: <a href="julieta.rivas@mail.edu.cl"
-              style="color:black">maria.rivas@mail.edu.cl</a>
-          <p class="card-text">Horario de atención: Lunes a Jueves 14:30-15:30</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-4 d-flex align-items-stretch">
-      <div class="card">
-        <img src="imagenes/docente3.jpeg" class="card-img-top" alt="3">
-        <div class="card-body">
-          <h5 class="card-title"><b>Profesor de Historia</b></h5>
-          <p class="card-text">Mario Orellana
-          <p class="card-text">Correo: <a href="mario.orellana@mail.edu.cl"
-              style="color:black">mario.orellana@mail.edu.cl</a></p>
-          <p class="card-text">Horario de atención: Lunes a Jueves 12:30-13:30</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Fila2 -->
-  <!-- Profesor 4 -->
-  <div class="row mx-auto py-4">
-    <div class="col-4 d-flex align-items-stretch">
-      <div class="card">
-        <img src="imagenes/docente4.jpeg" class="card-img-top" alt="4">
-        <div class="card-body">
-          <h5 class="card-title"><b>Profesor de Filosofia</b></h5>
-          <p class="card-text">José Zamudio
-          <p class="card-text">Correo: <a href="jose.zamudio@mail.edu.cl"
-              style="color:black">josefa.zamudio@mail.edu.cl</a>
-          <p class="card-text">Horario de atención: Lunes 16:30-18:30
-          <p>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Profesor 5 -->
-    <div class="col-4 d-flex align-items-stretch">
-      <div class="card">
-        <img src="imagenes/docente5.jpeg" class="card-img-top" alt="5">
-        <div class="card-body">
-          <h5 class="card-title"><b>Profesor de Educación Física</b></h5>
-          <p class="card-text">Juan José Mora
-          <p>
-          <p class="card-text">Correo: <a href="juanjose.mora@mail.edu.cl"
-              style="color:black">juanjose.mora@mail.edu.cl</a></p>
-          <p class="card-text">Horario de atención: Lunes y Martes 14:30-15:30
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Profesor 6 -->
-    <div class="col-4 d-flex align-items-stretch">
-      <div class="card">
-        <img src="imagenes/docente7.jpeg" class="card-img-top" alt="6">
-        <div class="card-body">
-          <h5 class="card-title"><b>Profesor de Biología</b></h5>
-          <p class="card-text">Nicolás Castellón
-          <p>
-          <p class="card-text">Correo: <a href="nicolas.castellon@mail.edu.cl"
-              style="color:black">nicolas.castellon@mail.edu.cl</a></p>
-          <p class="card-text">Horario de atención: Martes a Jueves 14:30-15:30
-          <p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Fila3 -->
-  <div class="row mx-auto py-4 row-padding-bottom">
-    <!-- Profesor 7 -->
-    <div class="col-4 d-flex align-items-stretch">
-      <div class="card">
-        <img src="imagenes/docente6.jpeg" class="card-img-top" alt="7">
-        <div class="card-body">
-          <h5 class="card-title"><b>Profesora de Física</b></h5>
-          <p class="card-text">Juliana Valdivieso
-          <p>
-          <p class="card-text">Correo: <a href="juliana.valdivieso@mail.edu.cl"
-              style="color:black">juliana.valdivieso@mail.edu.cl</a></p>
-          <p class="card-text">Horario de atención: Jueves 13:00-15:30
-          <p>
-        </div>
-      </div>
-    </div>
-    <!-- Profesor 8 -->
-    <div class="col-4 d-flex align-items-stretch">
-      <div class="card">
-        <img src="imagenes/docente8.jpeg" class="card-img-top" alt="8">
-        <div class="card-body">
-          <h5 class="card-title"><b>Profesora de Artes Visuales</b></h5>
-          <p class="card-text">Salomé Cortés
-          <p class="card-text">Correo: <a href="salome.cortes@mail.edu.cl"
-              style="color:black">salome.cortes@mail.edu.cl</a></p>
-          <p class="card-text">Horario de atención: Martes a Viernes 17:00-18:30</p>
-        </div>
-      </div>
-    </div>
-    <!-- Profesor 9 -->
-    <div class="col-4 d-flex align-items-stretch">
-      <div class="card">
-        <img src="imagenes/docente9.jpeg" class="card-img-top" alt="9">
-        <div class="card-body">
-          <h5 class="card-title"><b>Profesora de Tecnología</b></h5>
-          <p class="card-text">Miranda Colen 
-          <p class="card-text">Correo: <a href="miranda.colen@s@mail.edu.cl"
-              style="color:black">miranda.colen@mail.edu.cl</a></p>
-          <p class="card-text">Horario de atención: Lunes a Viernes 14:30-15:30
-          </p>
-        </div>
-      </div>
     </div>
   </div>
 </div>

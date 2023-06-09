@@ -1,0 +1,62 @@
+[
+  {
+    "titulo": "Profesor de Matemáticas",
+    "nombre": "María Castellana",
+    "correo": "maria.castellana@mail.edu.cl",
+    "horario": "Lunes a Jueves 14:30-15:30"
+  },
+  {
+    "titulo": "Profesor de Historia",
+    "nombre": "Mario Orellana",
+    "correo": "mario.orellana@mail.edu.cl",
+    "horario": "Lunes a Jueves 12:30-13:30"
+  },
+  {
+    "titulo": "Profesor de Filosofía",
+    "nombre": "José Zamudio",
+    "correo": "jose.zamudio@mail.edu.cl",
+    "horario": "Lunes 16:30-18:30"
+  },
+  {
+    "titulo": "Profesor de Educación Física",
+    "nombre": "Juan José Mora",
+    "correo": "juanjose.mora@mail.edu.cl",
+    "horario": "Lunes y Martes 14:30-15:30"
+  },
+  {
+    "titulo": "Profesor de Biología",
+    "nombre": "Nicolás Castellón",
+    "correo": "nicolas.castellon@mail.edu.cl",
+    "horario": "Martes a Jueves 14:30-15:30"
+  },
+  {
+    "titulo": "Profesora de Física",
+    "nombre": "Juliana Valdivieso",
+    "correo": "juliana.valdivieso@mail.edu.cl",
+    "horario": "Jueves 13:00-15:30"
+  },
+  {
+    "titulo": "Profesora de Artes Visuales",
+    "nombre": "Salomé Cortés",
+    "correo": "salome.cortes@mail.edu.cl",
+    "horario": "Martes a Viernes 17:00-18:30"
+  },
+  {
+    "titulo": "Profesora de Tecnología",
+    "nombre": "Miranda Colen",
+    "correo": "miranda.colen@mail.edu.cl",
+    "horario": "Lunes a Viernes 14:30-15:30"
+  },
+  {
+    "titulo": "Profesor de Química",
+    "nombre": "Gonzalo Herrera",
+    "correo": "gonzalo.herrera@mail.edu.cl",
+    "horario": "Miércoles 10:00-12:00"
+  },
+  {
+    "titulo": "Profesor de Inglés",
+    "nombre": "Luisa Gómez",
+    "correo": "luisa.gomez@mail.edu.cl",
+    "horario": "Lunes a Viernes 09:00-10:00"
+  }
+]
