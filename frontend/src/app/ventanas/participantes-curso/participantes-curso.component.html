@@ -1,5 +1,5 @@
 <section>
-    <table class="table table-light table-striped">
+    <table class="table table-light table-striped" >
       <thead class="table-dark table-striped">
         <tr>
           <th scope="col">Rut</th>
@@ -9,42 +9,14 @@
           <th scope="col">Colegio</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>20.919.222-2</td>
-          <td>Nathalia</td>
-          <td>Pailamilla</td>
-          <td>Trigo</td>
-          <td>El olivar</td>
-        </tr>
-        <tr>
-          <td>20.919.909-2</td>
-          <td>Nathalia</td>
-          <td>Pailamilla</td>
-          <td>Trigo</td>
-          <td>El olivar</td>
-        </tr>
-        <tr>
-          <td>20.919.949-2</td>
-          <td>Nathalia</td>
-          <td>Pailamilla</td>
-          <td>Trigo</td>
-          <td>El olivar</td>
-        </tr>
-        <tr>
-          <td>20.919.909-2</td>
-          <td>Nathalia</td>
-          <td>Pailamilla</td>
-          <td>Trigo</td>
-          <td>El olivar</td>
-        </tr>
-        <tr>
-          <td>20.919.909-2</td>
-          <td>Nathalia</td>
-          <td>Pailamilla</td>
-          <td>Trigo</td>
-          <td>El olivar</td>
-        </tr>
+      <tbody>    
+     <tr *ngFor="let alumno of alumnos;">
+          <td>{{ alumno.rut }}</td>
+          <td>{{ alumno.nombre }}</td>
+          <td>{{ alumno.apellidoP }}</td>
+          <td>{{ alumno.apellidoM }}</td>
+          <td>{{ alumno.colegio }}</td>
+      </tr>
       </tbody>
     </table>
   </section>

@@ -1,0 +1,58 @@
+[
+    {
+      "rut": "209869489",
+      "nombre": "Maria",
+      "apellidoP": "Valdes",
+      "apellidoM": "Aguilera",
+      "colegio" : "El olivar"
+    },
+    {
+        "rut": "189356782",
+        "nombre": "Bastian",
+        "apellidoP": "Guerra",
+        "apellidoM": "Flores",
+        "colegio" : "Viña"
+    },
+    {
+        "rut": "199356782",
+        "nombre": "Matias",
+        "apellidoP": "Cortes",
+        "apellidoM": "Silva",
+        "colegio" : "Limache"
+    },
+    {
+        "rut": "254564512",
+        "nombre": "Josefa",
+        "apellidoP": "Sanhueza",
+        "apellidoM": "Loyola",
+        "colegio" : "Pichilemu"
+    },
+    {
+        "rut": "155647289",
+        "nombre": "Jose",
+        "apellidoP": "Trigo",
+        "apellidoM": "Lius",
+        "colegio" : "El olivar"
+    },
+    {
+        "rut": "142342345",
+        "nombre": "Gabriel",
+        "apellidoP": "Litch",
+        "apellidoM": "Miau",
+        "colegio" : "Santiago"
+    },
+    {
+        "rut": "15648489k",
+        "nombre": "joselu",
+        "apellidoP": "lukaku",
+        "apellidoM": "Flores",
+        "colegio" : "italia"
+    },
+    {
+        "rut": "25646542k",
+        "nombre": "Cristiano",
+        "apellidoP": "Messi",
+        "apellidoM": "Mbappe",
+        "colegio" : "paris"
+    }
+]    
