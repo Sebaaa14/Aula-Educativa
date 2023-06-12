@@ -37,11 +37,12 @@ export class RegistrateComponent {
     correo: ['', Validators.compose([
       Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"),
       Validators.required
-    ])],
+    ])]/*,
     telefono: ['', Validators.compose([
-      Validators.pattern("^\d{9}$"),
+      Validators.pattern("^\d{8,9}$"),
       Validators.required
-    ])],
+      //NO FUNCIONA XD ASI Q A LA XUXA
+    ])]*/
   })
 
   constructor(private fb: FormBuilder, private router: Router) {}
@@ -52,15 +53,6 @@ export class RegistrateComponent {
   }
   
 
-  onSubmit() {
-    if (this.registrateForm.valid) {
-      // Realizar acciones cuando el formulario es válido
-      this.router.navigate(['/mainpage']);
-    } else {
-      // Realizar acciones cuando el formulario es inválido
-      this.registrateForm.markAllAsTouched();
-    }
-  }
 
   registrate() {
     if (this.registrateForm.valid) {
