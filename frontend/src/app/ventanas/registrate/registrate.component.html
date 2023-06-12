@@ -1,109 +1,112 @@
 <div class = "imagen">
-    <form action="" class="formulario" id="formulario">
-        <div class="formulario_grupo" id="grupo_nombre">
-            <label for="nombre" class="formulario_label">Nombre Alumno</label>
-            <div class="formulario_grupo-input">
-                <input type="text" class="formulario_input" name="nombre" id="nombre" placeholder="Nombre Apellido">
-                <p class="formulario_validacion-estado fas fa-times-circle"></p>
-            </div>
-            <p class="formulario_input-error">Ingrese un nombre de acuerdo a nombre apellido, sin caracteres
-                especiales o numeros.</p>
+    <form [formGroup]="registrateForm" class="formulario" id="formulario">
+        <div class="formulario_grupo" id="grupo_nombre" [class.formulario_grupo-incorrecto]="validarCampo('nombre')">
+          <label for="nombre" class="formulario_label">Nombre Alumno</label>
+          <div class="formulario_grupo-input">
+            <input type="text" class="formulario_input" formControlName="nombre" name="nombre" id="nombre"
+              placeholder="Nombre Apellido">
+            <p class="formulario_validacion-estado fas fa-times-circle"></p>
+          </div>
+          <p class="formulario_input-error" *ngIf="validarCampo('nombre')">Ingrese un nombre de acuerdo a nombre
+            apellido, sin caracteres especiales o números.</p>
         </div>
-
-        <div class="formulario_grupo" id="grupo_rut">
-            <label for="rut" class="formulario_label">Rut Alumno</label>
-            <div class="formulario_grupo-input">
-                <input type="text" class="formulario_input" name="rut" id="rut" placeholder="12345678-9">
-                <p class="formulario_validacion-estado fas fa-times-circle"></p>
-            </div>
-            <p class="formulario_input-error">Ingrese un rut de acuerdo 12345678-9.</p>
+      
+        <div class="formulario_grupo" id="grupo_rut" [class.formulario_grupo-incorrecto]="validarCampo('rut')">
+          <label for="rut" class="formulario_label">Rut Alumno</label>
+          <div class="formulario_grupo-input">
+            <input type="text" class="formulario_input" formControlName="rut" name="rut" id="rut" placeholder="12345678-9">
+            <p class="formulario_validacion-estado fas fa-times-circle"></p>
+          </div>
+          <p class="formulario_input-error" *ngIf="validarCampo('rut')">Ingrese un rut de acuerdo 12345678-9.</p>
         </div>
-
-        <div class="formulario_grupo" id="grupo_curso">
-            <label for="curso" class="formulario_label">Curso Alumno</label>
-            <div class="formulario_grupo-input">
-                <input type="text" class="formulario_input" name="curso" id="curso" placeholder="1-4º basica o media">
-                <p class="formulario_validacion-estado fas fa-times-circle"></p>
-            </div>
-            <p class="formulario_input-error">Ingrese el curso.</p>
+      
+        <div class="formulario_grupo" id="grupo_curso" [class.formulario_grupo-incorrecto]="validarCampo('curso')">
+          <label for="curso" class="formulario_label">Curso Alumno</label>
+          <div class="formulario_grupo-input">
+            <input type="text" class="formulario_input" formControlName="curso" name="curso" id="curso"
+              placeholder="1-4º basica o media">
+            <p class="formulario_validacion-estado fas fa-times-circle"></p>
+          </div>
+          <p class="formulario_input-error" *ngIf="validarCampo('curso')">Ingrese el curso.</p>
         </div>
-
-        <div class="formulario_grupo" id="grupo_colegio">
-            <label for="colegio" class="formulario_label">Nombre Colegio</label>
-            <div class="formulario_grupo-input">
-                <input type="text" class="formulario_input" name="colegio" id="colegio" placeholder="Establecimiento">
-                <p class="formulario_validacion-estado fas fa-times-circle"></p>
-            </div>
-            <p class="formulario_input-error">Ingrese su colegio.</p>
+      
+        <div class="formulario_grupo" id="grupo_colegio" [class.formulario_grupo-incorrecto]="validarCampo('nombre')">
+          <label for="colegio" class="formulario_label">Nombre Colegio</label>
+          <div class="formulario_grupo-input">
+            <input type="text" class="formulario_input" formControlName="nombre" name="colegio" id="colegio"
+              placeholder="Establecimiento">
+            <p class="formulario_validacion-estado fas fa-times-circle"></p>
+          </div>
+          <p class="formulario_input-error" *ngIf="validarCampo('colegio')">Ingrese su colegio.</p>
         </div>
-
-        <div class="formulario_grupo" id="grupo_password">
-            <label for="password" class="formulario_label">Contraseña</label>
-            <div class="formulario_grupo-input">
-                <input type="password" class="formulario_input" name="password" id="password">
-                <p class="formulario_validacion-estado fas fa-times-circle"></p>
-            </div>
-            <p class="formulario_input-error">Ingrese una contraseña entre 6-10 caracteres.</p>
+      
+        <div class="formulario_grupo" id="grupo_password" [class.formulario_grupo-incorrecto]="validarCampo('contrasena')">
+          <label for="password" class="formulario_label">Contraseña</label>
+          <div class="formulario_grupo-input">
+            <input type="password" class="formulario_input" formControlName="contrasena" name="password" id="password">
+            <p class="formulario_validacion-estado fas fa-times-circle"></p>
+          </div>
+          <p class="formulario_input-error" *ngIf="validarCampo('contrasena')">Ingrese una contraseña entre 6-10 caracteres.</p>
         </div>
-
-        <div class="formulario_grupo" id="grupo_password2">
-            <label for="password2" class="formulario_label">Repetir Contraseña</label>
-            <div class="formulario_grupo-input">
-                <input type="password" class="formulario_input" name="password2" id="password2">
-                <p class="formulario_validacion-estado fas fa-times-circle"></p>
-            </div>
-            <p class="formulario_input-error">Las contraseñas deben ser iguales.</p>
+      
+        <div class="formulario_grupo" id="grupo_password2" [class.formulario_grupo-incorrecto]="validarCampo('contrasena')">
+          <label for="password2" class="formulario_label">Repetir Contraseña</label>
+          <div class="formulario_grupo-input">
+            <input type="password" class="formulario_input" formControlName="contrasena" name="contrasena" id="contrasena">
+            <p class="formulario_validacion-estado fas fa-times-circle"></p>
+          </div>
+          <p class="formulario_input-error" *ngIf="validarCampo('password2')">Las contraseñas deben ser iguales.</p>
         </div>
-
-        <div class="formulario_grupo" id="grupo_apoderado">
-            <label for="apoderado" class="formulario_label"> Nombre Apoderado</label>
-            <div class="formulario_grupo-input">
-                <input type="text" class="formulario_input" name="apoderado" id="apoderado"
-                    placeholder="Nombre Apellido">
-                <p class="formulario_validacion-estado fas fa-times-circle"></p>
-            </div>
-            <p class="formulario_input-error">Ingrese un nombre de acuerdo a nombre apellido, sin caracteres
-                especiales o numeros.</p>
+      
+        <div class="formulario_grupo" id="grupo_apoderado" [class.formulario_grupo-incorrecto]="validarCampo('apoderado')">
+          <label for="apoderado" class="formulario_label"> Nombre Apoderado</label>
+          <div class="formulario_grupo-input">
+            <input type="text" class="formulario_input" formControlName="apoderado" name="apoderado" id="apoderado"
+              placeholder="Nombre Apellido">
+            <p class="formulario_validacion-estado fas fa-times-circle"></p>
+          </div>
+          <p class="formulario_input-error" *ngIf="validarCampo('apoderado')">Ingrese un nombre de acuerdo a nombre apellido, sin caracteres especiales o numeros.</p>
         </div>
-
-        <div class="formulario_grupo" id="grupo_rutApoderado">
-            <label for="rutApoderado" class="formulario_label">Rut Apoderado</label>
-            <div class="formulario_grupo-input">
-                <input type="text" class="formulario_input" name="rutApoderado" id="rutApoderado"
-                    placeholder="12345678-9">
-                <p class="formulario_validacion-estado fas fa-times-circle"></p>
-            </div>
-            <p class="formulario_input-error">Ingrese un rut de acuerdo 12345678-9.</p>
+      
+        <div class="formulario_grupo" id="grupo_rutApoderado" [class.formulario_grupo-incorrecto]="validarCampo('rutApoderado')">
+          <label for="rutApoderado" class="formulario_label">Rut Apoderado</label>
+          <div class="formulario_grupo-input">
+            <input type="text" class="formulario_input" formControlName="rutApoderado" name="rutApoderado"
+              id="rutApoderado" placeholder="12345678-9">
+            <p class="formulario_validacion-estado fas fa-times-circle"></p>
+          </div>
+          <p class="formulario_input-error" *ngIf="validarCampo('rutApoderado')">Ingrese un rut de acuerdo 12345678-9.</p>
         </div>
-
-        <div class="formulario_grupo" id="grupo_correo">
-            <label for="correo" class="formulario_label">Email</label>
-            <div class="formulario_grupo-input">
-                <input type="email" class="formulario_input" name="correo" id="correo" placeholder="ejemplo@gmail.com">
-                <p class="formulario_validacion-estado fas fa-times-circle"></p>
-            </div>
-            <p class="formulario_input-error">El correo solo puede contener letras, numeros, puntos, guiones y
-                guion bajo.</p>
+      
+        <div class="formulario_grupo" id="grupo_correo" [class.formulario_grupo-incorrecto]="validarCampo('correo')">
+          <label for="correo" class="formulario_label">Email</label>
+          <div class="formulario_grupo-input">
+            <input type="email" class="formulario_input" formControlName="correo" name="correo" id="correo"
+              placeholder="ejemplo@gmail.com">
+            <p class="formulario_validacion-estado fas fa-times-circle"></p>
+          </div>
+          <p class="formulario_input-error" *ngIf="validarCampo('correo')">El correo solo puede contener letras, números, puntos, guiones y guion bajo.</p>
         </div>
-
-        <div class="formulario_grupo" id="grupo_telefono">
-            <label for="telefono" class="formulario_label">Teléfono</label>
-            <div class="formulario_grupo-input">
-                <input type="text" class="formulario_input" name="telefono" id="telefono" placeholder="950981245">
-                <p class="formulario_validacion-estado fas fa-times-circle"></p>
-            </div>
-            <p class="formulario_input-error">Ingresa un numero valido.</p>
+      
+        <div class="formulario_grupo" id="grupo_telefono" [class.formulario_grupo-incorrecto]="validarCampo('telefono')">
+          <label for="telefono" class="formulario_label">Teléfono</label>
+          <div class="formulario_grupo-input">
+            <input type="text" class="formulario_input" formControlName="telefono" name="telefono" id="telefono"
+              placeholder="950981245">
+            <p class="formulario_validacion-estado fas fa-times-circle"></p>
+          </div>
+          <p class="formulario_input-error" *ngIf="validarCampo('telefono')">Ingresa un número válido.</p>
         </div>
-
+      
         <div class="formulario_mensaje" id="formulario_mensaje">
-            <p class="fas fa-exclamation-triangle"> <b>Error:</b> Por favor rellena el formulario
-                correctamente.</p>
+          <p class="fas fa-exclamation-triangle"> <b>Error:</b> Por favor rellena el formulario correctamente.</p>
         </div>
-
+      
         <div class="formulario_grupo formulario_grupo-btn-enviar">
-            <button type="submit" class="formulario_btn">Registrase</button>
-            <br>
-            <button type="submit" class="formulario_btn" onclick="window.location.href='index.html'">Volver</button>
+            <button type="submit" [disabled]="registrateForm.invalid" class="formulario_btn btn" (click)="registrate()" (keyup.enter)="registrate()">Registrate</button>
+          <br>
+          <button type="submit" class="formulario_btn" onclick="window.location.href='index.html'">Volver</button>
         </div>
-    </form>
+      </form>
+       
 </div>
