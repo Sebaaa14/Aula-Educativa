@@ -1,0 +1,12 @@
+Registrar Alumno
+{
+	"nombre":"Elpepe",
+	"rut_alumno":"20986948-5",
+	"curso":"5º",
+	"colegio":"Ñuñoacity",
+	"contrasena":"pepito",
+	"apoderado":"El juancin",
+	"rut_apoderado":"15560875.3",
+	"email":"pepinbombin@gmail.com",
+	"telefono":"971971242"
+}

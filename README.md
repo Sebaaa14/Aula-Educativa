@@ -5,7 +5,7 @@ de dispositivos móviles (tener en cuenta el uso de menú tipo hamburguesa)
 diferenciar funcionalidades entre admin y usuario.
 • EF.3: Realizar un API-REST que involucre los métodos POST,
 GET, DELETE y PUT, haciendo uso de un framework backend.
-Algunos Flask / Django(Python), Express / NestJS(NodeJS), Laravel, Symfony, CodeIgniter (PHP).
+Algunos Flask / Django(Python), Express / NestJS(NodeJS), Laravel, Symfony, CodeIgniter (PHP).
 • EF.4: Debe conectarse el front-end al backend por medio de un
 API a través de una DB ya sea relacional (postgress, mysql, mariaDB) o no relacional (MongoDB, Firebase).
 • EF.5: Incluir al menos 4 aspectos de seguridad web. Algunas podrian
