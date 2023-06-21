@@ -79,3 +79,38 @@ app.post("/registrarAlumno", (req, res) => {
         }
     });
 });
+//Post para iniciar sesion
+app.post("/iniciarSesion", (req, res) => {
+    console.log("valor de req.body: ", req.body);
+    const { rut_alumno, contrasena } = req.body;
+    pool.query("SELECT * FROM alumnos WHERE rut_alumno = ?", [rut_alumno], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("error consultando en el servidor");
+        }
+        else if (results.length === 0) {
+            res.status(404).send("El alumno no existe");
+        }
+        else {
+            const alumno = results[0];
+            // Comparar la contraseña ingresada con el hash almacenado en la base de datos
+            bcrypt.compare(contrasena, alumno.contrasena, (compareError, isMatch) => {
+                if (compareError) {
+                    console.error(compareError);
+                    res.status(500).send("error comparando las claves");
+                }
+                else if (!isMatch) {
+                    res.status(400).send("La clave ingresada es incorrecta");
+                }
+                else {
+                    const response = {
+                        status: "exito",
+                        message: "Inicio de sesión exitoso",
+                        data: alumno
+                    };
+                    res.status(200).json(response);
+                }
+            });
+        }
+    });
+});
