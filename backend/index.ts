@@ -58,8 +58,7 @@ app.get('/docentes', (req:any, res:any) => {
 
 //Post para registrar alumno
 app.post("/registrarAlumno", (req:any,res:any) => {
-    console.log("valor de req.body: ",req.body);
-
+    
     const {nombre,rut_alumno,curso,colegio,contrasena,apoderado,rut_apoderado,email,telefono} = req.body;
 
     bcrypt.hash(contrasena, 1, (error:any,hash:any) => {
@@ -90,8 +89,6 @@ app.post("/registrarAlumno", (req:any,res:any) => {
 
 //Post para iniciar sesion
 app.post("/iniciarSesion", (req: any, res: any) => {
-    console.log("valor de req.body: ", req.body);
-
     const { rut_alumno, contrasena } = req.body;
 
     pool.query(

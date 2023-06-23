@@ -17,7 +17,7 @@ import { RegistrateComponent } from './ventanas/registrate/registrate.component'
 import { FooterComponent } from './componentes/footer/footer.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

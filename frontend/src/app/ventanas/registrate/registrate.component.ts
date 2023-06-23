@@ -51,8 +51,6 @@ export class RegistrateComponent {
     const campoForm = this.registrateForm.get(campo);
     return campoForm !== null && campoForm.invalid && (campoForm.touched || campoForm.dirty);
   }
-  
-
 
   registrate() {
     if (this.registrateForm.valid) {
