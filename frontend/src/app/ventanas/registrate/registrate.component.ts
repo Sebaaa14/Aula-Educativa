@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registrate',
@@ -11,11 +12,15 @@ import { Router } from '@angular/router';
 export class RegistrateComponent {
   registrateForm = this.fb.group({
     apoderado: ['', Validators.compose([
-      Validators.pattern("^[a-zA-ZÀ-ÿ\s]{1,40}$"),
+      Validators.pattern("^[a-zA-ZÀ-ÿ]+ [a-zA-ZÀ-ÿ]{1,40}$"),
       Validators.required
     ])],
     nombre: ['', Validators.compose([
-      Validators.pattern("^[a-zA-ZÀ-ÿ\s]{1,40}$"),
+      Validators.pattern("^[a-zA-ZÀ-ÿ]+ [a-zA-ZÀ-ÿ]{1,40}$"),
+      Validators.required
+    ])],
+    colegio: ['', Validators.compose([
+      Validators.pattern("^[a-zA-ZÀ-ÿ]+( [a-zA-ZÀ-ÿ]{1,40})?$"),
       Validators.required
     ])],
     rut: ['', Validators.compose([
@@ -37,25 +42,64 @@ export class RegistrateComponent {
     correo: ['', Validators.compose([
       Validators.pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"),
       Validators.required
-    ])]/*,
+    ])],
     telefono: ['', Validators.compose([
-      Validators.pattern("^\d{8,9}$"),
+      Validators.pattern("^[0-9]{8,9}$"),
       Validators.required
-      //NO FUNCIONA XD ASI Q A LA XUXA
-    ])]*/
+    ])]
   })
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) { }
+
 
   validarCampo(campo: string): boolean {
     const campoForm = this.registrateForm.get(campo);
-    return campoForm !== null && campoForm.invalid && (campoForm.touched || campoForm.dirty);
+    if (campoForm !== null && campoForm.invalid && (campoForm.touched || campoForm.dirty)) {
+      console.log(`El campo ${campo} es inválido`);
+      return true;
+    }
+    return false;
   }
+
 
   registrate() {
     if (this.registrateForm.valid) {
-      // Redirige a la otra ventana
-      this.router.navigate(['home']);
-    }
+      const nombre=this.registrateForm.value.nombre;
+      const rut=this.registrateForm.value.rut;
+      const curso=this.registrateForm.value.curso;
+      const colegio=this.registrateForm.value.colegio;
+      const contrasena=this.registrateForm.value.contrasena;
+      const apoderado=this.registrateForm.value.apoderado;
+      const rutApoderado=this.registrateForm.value.rutApoderado;
+      const email=this.registrateForm.value.correo;
+      const telefono=this.registrateForm.value.telefono;
+
+      const requestBody = {
+        nombre: nombre,
+        rut_alumno:rut,
+        curso:curso,
+        colegio:colegio,
+        contrasena:contrasena,
+        apoderado:apoderado,
+        rut_apoderado:rutApoderado,
+        email:email,
+        telefono:telefono
+      }
+
+
+    this.http.post('http://localhost:9000/registrarAlumno', requestBody).subscribe((response: any) => {
+      if (response) {
+        alert("Alumno registrado correctamente");
+        this.router.navigate(['home']);
+      } 
+    }, (error) => {
+      console.error(error);
+    });
+
+
+    } else { alert("Complete todos los campos"); }
+
   }
 }
+
+

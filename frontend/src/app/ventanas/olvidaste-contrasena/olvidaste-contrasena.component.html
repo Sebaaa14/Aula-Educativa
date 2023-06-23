@@ -6,12 +6,15 @@
                     <div class="card-body">
                         <h3 class="card-title text-center">Registro de Alumno</h3>
                         <form [formGroup]="resetForm" id="formulario">
+
                             <div class="form-group">
                                 <label for="username">Rut del alumno</label>
                                 <input type="text" id="rut" name="rut" class="form-control" formControlName="rut">
                                 <div *ngIf="resetForm.controls['rut'].errors && (resetForm.controls['rut'].dirty || resetForm.controls['rut'].touched)"
                                     class="text-danger">El Rut es inválido</div>
                             </div>
+
+                            
                             <div class="form-group">
                                 <label for="password">Contraseña</label>
                                 <input type="password" id="contraseña" name="contraseña" formControlName="contraseña" class="form-control">
@@ -21,7 +24,7 @@
                             <div class="form-group">
                                 <label for="password">Recontraseña</label>
                                 <input type="password" id="recontraseña" name="recontraseña" class="form-control" formControlName="confirmarContraseña">
-                                <div *ngIf="showPasswordMismatchError" class="text-danger">Las contraseñas no coinciden</div>
+                                <div *ngIf="mostrarContrasenaNoCoinciden" class="text-danger">Las contraseñas no coinciden</div>
                             </div>
                             <button type="submit" [disabled]="resetForm.invalid" class="btn btn-primary btn-block" (click)="recuperarContrasena()" (keyup.enter)="recuperarContrasena()">Cambiar Contraseña</button>
                         </form>

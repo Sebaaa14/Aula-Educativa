@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 })
 export class OlvidasteContrasenaComponent {
   resetForm: FormGroup;
-  showSuccessMessage: boolean = false;
-  showErrorMessage: boolean = false;
-  errorMessage: string = '';
+  mostrarMensajeCompletado: boolean = false;
+  mostrarMensajeError: boolean = false;
+  mensajeError: string = '';
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router:Router) {
     this.resetForm = this.fb.group({
@@ -31,7 +31,7 @@ export class OlvidasteContrasenaComponent {
     });
   }
 
-  showPasswordMismatchError: boolean = false;
+  mostrarContrasenaNoCoinciden: boolean = false;
 
   recuperarContrasena() {
     if (this.resetForm.valid) {
@@ -46,7 +46,7 @@ export class OlvidasteContrasenaComponent {
       };
 
       if (contrasena !== recontrasena) {
-        this.showPasswordMismatchError = true;
+        this.mostrarContrasenaNoCoinciden = true;
         return; // Detener el proceso de recuperación de contraseña si las contraseñas no coinciden
       }
 
@@ -55,14 +55,14 @@ export class OlvidasteContrasenaComponent {
           if (response.mensaje) {
             // Contraseña actualizada exitosamente
             alert("Contraseña actualizada correctamente");
-            this.showSuccessMessage = true;
-            this.showErrorMessage = false;
+            this.mostrarMensajeCompletado = true;
+            this.mostrarMensajeError = false;
             this.router.navigate(['home']);
           } else {
             // Error en el proceso de recuperación de contraseña
-            this.showSuccessMessage = false;
-            this.showErrorMessage = true;
-            this.errorMessage = response.resultado;
+            this.mostrarMensajeCompletado = false;
+            this.mostrarMensajeError = true;
+            this.mensajeError = response.resultado;
           }
         }, (error) => {
           console.error(error);
