@@ -114,3 +114,39 @@ app.post("/iniciarSesion", (req, res) => {
         }
     });
 });
+//Post para recuperar Contraseña
+app.post("/recuperarContrasena", (req, res) => {
+    const { rut_alumno, contrasena, recontrasena } = req.body;
+    pool.query("SELECT * FROM alumnos WHERE rut_alumno=?", [rut_alumno], function (error, results, fields) {
+        if (error) {
+            console.log(error);
+            res.send({ "mensaje": false, "resultado": "" });
+            return;
+        }
+        if (results.length > 0) {
+            if (results[0].rut_alumno == rut_alumno) {
+                console.log("Nombre alumno: ", results[0].nombre);
+                if (contrasena === recontrasena) {
+                    bcrypt.hash(contrasena, 1, (error, hash) => {
+                        pool.query("UPDATE alumnos SET contrasena = ? WHERE rut_alumno = ?", [hash, rut_alumno], function (error, results, fields) {
+                            if (error) {
+                                console.log(error);
+                                res.send({ "mensaje": false, "resultado": "no se concreto" });
+                            }
+                            else {
+                                console.log("actualizada");
+                                res.send(JSON.stringify({ mensaje: true, resultado: 'Contraseña actualizada' }));
+                            }
+                        });
+                    });
+                }
+                else {
+                    res.send(JSON.stringify({ mensaje: false, resultado: 'Las contraseñas no coinciden' }));
+                }
+            }
+        }
+        else {
+            res.send(JSON.stringify({ mensaje: false, resultado: 'Usuario no registrado' }));
+        }
+    });
+});

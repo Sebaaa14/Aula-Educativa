@@ -10,3 +10,10 @@ Registrar Alumno
 	"email":"pepinbombin@gmail.com",
 	"telefono":"971971242"
 }
+
+Recuperar Contraseña
+{
+	"rut_alumno":"20986948-9",
+	"contrasena":"1234",
+	"recontrasena":"1234"
+}
