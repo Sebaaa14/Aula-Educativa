@@ -14,22 +14,29 @@ interface Alumno {
   templateUrl: './participantes-curso.component.html',
   styleUrls: ['./participantes-curso.component.scss']
 })
+
+
 export class ParticipantesCursoComponent implements OnInit {
-  alumnos: Alumno[] = [];
+
+  alumnos: any[] = [];
+
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-    this.cargarAlumnos();
+  ngOnInit() {
+    this.obtenerAlumnos();
   }
 
-  cargarAlumnos() {
-    this.http.get<Alumno[]>('assets/json/participantes.json').subscribe(
-      (data: Alumno[]) => {
-        this.alumnos = data;
+  obtenerAlumnos() {
+    this.http.get('http://localhost:9000/alumnos').subscribe(
+      (response: any) => {
+        if (response.status === 'éxito') {
+          this.alumnos = response.data;
+        }
       },
       (error: any) => {
-        console.error('Error al leer el archivo JSON:', error);
+        console.error(error);
       }
     );
+
   }
 }

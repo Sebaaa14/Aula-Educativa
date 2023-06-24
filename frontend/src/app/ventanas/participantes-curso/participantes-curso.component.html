@@ -1,22 +1,22 @@
 <section>
-    <table class="table table-light table-striped" >
-      <thead class="table-dark table-striped">
-        <tr>
-          <th scope="col">Rut</th>
-          <th scope="col">Nombres</th>
-          <th scope="col">Apellido Paterno</th>
-          <th scope="col">Apellido materno</th>
-          <th scope="col">Colegio</th>
-        </tr>
-      </thead>
-      <tbody>    
-     <tr *ngFor="let alumno of alumnos;">
-          <td>{{ alumno.rut }}</td>
-          <td>{{ alumno.nombre }}</td>
-          <td>{{ alumno.apellidoP }}</td>
-          <td>{{ alumno.apellidoM }}</td>
-          <td>{{ alumno.colegio }}</td>
+  <table class="table table-light table-striped">
+    <thead class="table-dark table-striped">
+      <tr>
+        <th scope="col">Rut</th>
+        <th scope="col">Nombre Apellido</th>
+        <th scope="col">Curso</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Colegio</th>
       </tr>
-      </tbody>
-    </table>
-  </section>
+    </thead>
+    <tbody>
+      <tr *ngFor="let alumno of alumnos">
+        <td>{{ alumno.rut_alumno }}</td>
+        <td>{{ alumno.nombre }}</td>
+        <td>{{ alumno.curso }}</td>
+        <td>{{ alumno.email }}</td>
+        <td>{{ alumno.colegio }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
