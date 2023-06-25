@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface Alumno {
-  rut: string;
-  nombre: string;
-  apellidoP: string;
-  apellidoM: string;
-  colegio: string;
-}
 
 @Component({
   selector: 'app-participantes-curso',

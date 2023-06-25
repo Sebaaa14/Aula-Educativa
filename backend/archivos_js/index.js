@@ -145,8 +145,8 @@ app.post("/iniciarSesion", (req, res) => {
         }
     });
 });
-//Post para recuperar Contraseña
-app.post("/recuperarContrasena", (req, res) => {
+//put para recuperar Contraseña
+app.put("/recuperarContrasena", (req, res) => {
     const { rut_alumno, contrasena, recontrasena } = req.body;
     pool.query("SELECT * FROM alumnos WHERE rut_alumno=?", [rut_alumno], function (error, results, fields) {
         if (error) {
@@ -178,6 +178,41 @@ app.post("/recuperarContrasena", (req, res) => {
         }
         else {
             res.send(JSON.stringify({ mensaje: false, resultado: 'Usuario no registrado' }));
+        }
+    });
+});
+//Get del horario del alumno
+app.get('/horario', (req, res) => {
+    pool.query("SELECT * FROM horarios", (error, resultadoHorario) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("error en el servidor :c");
+        }
+        else {
+            const horario = {
+                status: 'éxito',
+                message: 'Horario cargado',
+                data: resultadoHorario
+            };
+            res.status(200).json(horario);
+        }
+    });
+});
+//Get del bloque horario
+app.get('/bloqueHorario', (req, res) => {
+    //Solo nos da la hora y minutos, un poco raro pero lo pille por ahi xdd
+    pool.query("SELECT TIME_FORMAT(hora_inicio, '%H:%i') AS hora_inicio, TIME_FORMAT(hora_fin, '%H:%i') AS hora_fin FROM horariosbloques;", (error, resultadoHorario) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("error en el servidor :c");
+        }
+        else {
+            const horario = {
+                status: 'éxito',
+                message: 'Horario cargado',
+                data: resultadoHorario
+            };
+            res.status(200).json(horario);
         }
     });
 });

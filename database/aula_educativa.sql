@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2023 a las 03:00:47
+-- Tiempo de generación: 25-06-2023 a las 06:36:03
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -88,6 +88,53 @@ INSERT INTO `docentes` (`id_profesor`, `nombre`, `email`, `horario`, `rol`) VALU
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `horarios`
+--
+
+CREATE TABLE `horarios` (
+  `id_horario` int(11) NOT NULL,
+  `dia` varchar(255) DEFAULT NULL,
+  `id_bloque` int(11) DEFAULT NULL,
+  `id_alumno` int(11) DEFAULT NULL,
+  `nombre_clase` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `horarios`
+--
+
+INSERT INTO `horarios` (`id_horario`, `dia`, `id_bloque`, `id_alumno`, `nombre_clase`) VALUES
+(1, 'Lunes', 1, 2, 'Lenguaje'),
+(2, 'Jueves', 1, 2, 'Matemáticas'),
+(3, 'Viernes', 3, 2, 'Filosofía'),
+(4, 'Martes', 4, NULL, 'Física');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `horariosbloques`
+--
+
+CREATE TABLE `horariosbloques` (
+  `id_bloque` int(11) NOT NULL,
+  `hora_inicio` time NOT NULL,
+  `hora_fin` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `horariosbloques`
+--
+
+INSERT INTO `horariosbloques` (`id_bloque`, `hora_inicio`, `hora_fin`) VALUES
+(1, '08:00:00', '09:30:00'),
+(2, '09:45:00', '11:15:00'),
+(3, '11:30:00', '13:00:00'),
+(4, '14:00:00', '15:30:00'),
+(5, '15:45:00', '17:15:00');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `login`
 --
 
@@ -108,7 +155,8 @@ INSERT INTO `login` (`id_alumno`, `hora`) VALUES
 (2, '2023-06-24 20:54:34.908'),
 (2, '2023-06-24 20:54:55.074'),
 (1, '2023-06-24 20:57:07.226'),
-(3, '2023-06-24 20:58:07.713');
+(3, '2023-06-24 20:58:07.713'),
+(2, '2023-06-24 23:22:48.317');
 
 --
 -- Índices para tablas volcadas
@@ -127,6 +175,20 @@ ALTER TABLE `docentes`
   ADD PRIMARY KEY (`id_profesor`);
 
 --
+-- Indices de la tabla `horarios`
+--
+ALTER TABLE `horarios`
+  ADD PRIMARY KEY (`id_horario`),
+  ADD KEY `ID_Bloque` (`id_bloque`),
+  ADD KEY `ID_Alumno` (`id_alumno`);
+
+--
+-- Indices de la tabla `horariosbloques`
+--
+ALTER TABLE `horariosbloques`
+  ADD PRIMARY KEY (`id_bloque`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -141,6 +203,23 @@ ALTER TABLE `alumnos`
 --
 ALTER TABLE `docentes`
   MODIFY `id_profesor` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `horarios`
+--
+ALTER TABLE `horarios`
+  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `horarios`
+--
+ALTER TABLE `horarios`
+  ADD CONSTRAINT `horarios_ibfk_1` FOREIGN KEY (`id_bloque`) REFERENCES `horariosbloques` (`ID_Bloque`),
+  ADD CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`id_alumno`) REFERENCES `alumnos` (`id_alumno`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

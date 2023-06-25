@@ -50,7 +50,7 @@ export class OlvidasteContrasenaComponent {
         return; // Detener el proceso de recuperación de contraseña si las contraseñas no coinciden
       }
 
-      this.http.post('http://localhost:9000/recuperarContrasena', requestBody)
+      this.http.put('http://localhost:9000/recuperarContrasena', requestBody)
         .subscribe((response: any) => {
           if (response.mensaje) {
             // Contraseña actualizada exitosamente
