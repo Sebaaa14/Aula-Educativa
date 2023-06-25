@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface Profesor {
-  titulo: string;
-  nombre: string;
-  correo: string;
-  horario: string;
-}
 
 @Component({
   selector: 'app-docentes',
@@ -14,7 +8,8 @@ interface Profesor {
   styleUrls: ['./docentes.component.scss']
 })
 export class DocentesComponent implements OnInit {
-  profesores: Profesor[] = [];
+
+  profesores:any[]=[];
 
   constructor(private http: HttpClient) { }
   
@@ -23,9 +18,9 @@ export class DocentesComponent implements OnInit {
   }
 
   cargarDatos() {
-  this.http.get<Profesor[]>('assets/json/docentes.json').subscribe(
-    (data: Profesor[]) => {
-      this.profesores = data;
+  this.http.get('http://localhost:9000/docentes').subscribe(
+    (resultados:any) => {
+      this.profesores = resultados.data;
     },
     (error: any) => {
       console.error('Error al leer el archivo JSON:', error);

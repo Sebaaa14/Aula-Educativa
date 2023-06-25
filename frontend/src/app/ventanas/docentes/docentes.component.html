@@ -3,9 +3,9 @@
     <div class="col-4 p-2"  *ngFor="let profesor of profesores; let i = index;">
       <div class="card h-100" style="margin-bottom: 20px;">
         <div class="card-body">
-          <h5 class="card-title"><b>{{ profesor.titulo }}</b></h5>
+          <h5 class="card-title"><b>{{ profesor.rol }}</b></h5>
           <p class="card-text">{{ profesor.nombre }}</p>
-          <p class="card-text">Correo: <a href="mailto:{{ profesor.correo }}" style="color:black">{{ profesor.correo }}</a></p>
+          <p class="card-text">Correo: <a href="mailto:{{ profesor.correo }}" style="color:black">{{ profesor.email }}</a></p>
           <p class="card-text">Horario de atención: {{ profesor.horario }}</p>
         </div>
       </div>
