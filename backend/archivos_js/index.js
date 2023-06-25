@@ -135,16 +135,15 @@ app.post("/iniciarSesion", (req, res) => {
                     const response = {
                         status: "exito",
                         message: "Inicio de sesión exitoso",
-                        data: alumno
+                        data: alumno,
+                        token: jwt.sign({ rut_alumno }, secretKey, { expiresIn: '1h' }) // Agrega el token al objeto de respuesta
                     };
-                    //TOKEN inicio sesion
-                    res.status(200).json(response);
-                    const token = jwt.sign({ rut_alumno }, secretKey, { expiresIn: '1h' });
-                    //para insertar en la table de login
+                    //para insertar en la tabla de login
                     const fechaActual = new Date();
-                    pool.query("insert into login (id_alumno, hora,token) VALUES (?,?,?)", [alumno.id_alumno, fechaActual, token], function (error, results, fields) {
+                    pool.query("insert into login (id_alumno, hora,token) VALUES (?,?,?)", [alumno.id_alumno, fechaActual, response.token], function (error, results, fields) {
                         console.log("Datos insertados en la tabla log");
                     });
+                    res.status(200).json(response);
                 }
             });
         }

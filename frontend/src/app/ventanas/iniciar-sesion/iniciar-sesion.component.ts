@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/services/authorization/auth.service';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -20,7 +21,7 @@ export class IniciarSesionComponent {
     ])],
   });
 
-  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private router: Router, private http: HttpClient, private AuthService:AuthService) {}
 
   iniciarSesion() {
     if (this.userForm.valid) {
@@ -32,6 +33,10 @@ export class IniciarSesionComponent {
       this.http.post('http://localhost:9000/iniciarSesion', requestBody).subscribe(
         (response: any) => {
           // La autenticación fue exitosa
+           // Almacena el token en el localStorage
+           localStorage.setItem('token', response.token);
+           this.AuthService.setToken(response.token);
+          // console.log(localStorage.getItem('token'));
           // Redirige a la otra ventana
           this.router.navigate(['home']);
           alert(response.message);

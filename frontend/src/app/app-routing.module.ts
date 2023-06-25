@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivateFn } from '@angular/router';
 import { CalendarioUsuarioComponent } from './ventanas/calendario-usuario/calendario-usuario.component';
 import { DocentesComponent } from './ventanas/docentes/docentes.component';
 import { HorarioUsuarioComponent } from './ventanas/horario-usuario/horario-usuario.component';
@@ -11,6 +11,7 @@ import { OlvidasteContrasenaComponent } from './ventanas/olvidaste-contrasena/ol
 import { ParticipantesCursoComponent } from './ventanas/participantes-curso/participantes-curso.component';
 import { PerfilUsuarioComponent } from './ventanas/perfil-usuario/perfil-usuario.component';
 import { RegistrateComponent } from './ventanas/registrate/registrate.component';
+import { AuthGuard } from './services/authorizationGuard/auth.guard';
 
 const routes: Routes = [
   //{path:'',component:},
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path:'notas',component:NotasUsuarioComponent},
   {path:'olvidaste-contrasena',component:OlvidasteContrasenaComponent},
   {path:'participantes',component:ParticipantesCursoComponent},
-  {path:'perfil',component:PerfilUsuarioComponent},
+  {path:'perfil',component:PerfilUsuarioComponent,canActivate:[AuthGuard]},
   {path:'iniciar-sesion',component:IniciarSesionComponent}
 ];
 
