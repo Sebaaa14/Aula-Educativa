@@ -58,7 +58,7 @@ app.get('/docentes', (req: any, res: any) => {
 
 //Mi perfil
 app.get('/miPerfil', (req: any, res: any) => {
-    pool.query("SELECT id_alumno FROM login ORDER BY id_alumno ASC LIMIT 1", (error: any, resultsLogin: any) => {
+    pool.query("SELECT id_alumno FROM login ORDER BY hora DESC LIMIT 1", (error: any, resultsLogin: any) => {
         if (error) {
             console.error(error);
             res.status(500).send("error en el servidor :c");
