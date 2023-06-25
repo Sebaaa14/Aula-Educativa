@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2')
-const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
 const PORT = 9000;
-
 const app = express();
+
+const secretKey = 'mi_clave_secreta';
 
 app.use(cors());
 app.use(express.json());
@@ -143,11 +146,14 @@ app.post("/iniciarSesion", (req: any, res: any) => {
                             message: "Inicio de sesión exitoso",
                             data: alumno
                         };
+                        
+                        //TOKEN inicio sesion
                         res.status(200).json(response);
+                        const token = jwt.sign({ rut_alumno }, secretKey, { expiresIn: '1h' });
 
                         //para insertar en la table de login
                         const fechaActual: Date = new Date();
-                        pool.query("insert into login (id_alumno, hora) VALUES (?,?)", [alumno.id_alumno, fechaActual], function (error: any, results: any, fields: any) {
+                        pool.query("insert into login (id_alumno, hora,token) VALUES (?,?,?)", [alumno.id_alumno, fechaActual,token], function (error: any, results: any, fields: any) {
                             console.log("Datos insertados en la tabla log");
                         });
                     }
@@ -155,6 +161,32 @@ app.post("/iniciarSesion", (req: any, res: any) => {
             }
         }
     );
+});
+
+// Middleware para autenticación
+function authenticateToken(req: any, res: any, next: any) {
+    const token = req.headers.authorization;
+
+    if (!token) {
+        return res.status(401).send('Token de autenticación no proporcionado');
+    }
+
+    const tokenWithoutBearer = token.split(' ')[1]; // Elimina el prefijo "Bearer" del token
+
+    jwt.verify(tokenWithoutBearer, secretKey, (error: any, decoded: any) => {
+        if (error) {
+            return res.status(403).send('Token de autenticación inválido');
+        }
+        // Aquí podrías realizar validaciones adicionales o cargar los datos del usuario desde la base de datos
+        req.user = decoded; // Almacena la información del usuario decodificada en el objeto de solicitud
+        next();
+    });
+}
+
+
+// Rutas protegidas
+app.get('/ruta-protegida', authenticateToken, (req: any, res: any) => {
+    res.send('Ruta protegida');
 });
 
 //put para recuperar Contraseña

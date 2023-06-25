@@ -17,3 +17,14 @@ Recuperar Contraseña
 	"contrasena":"1234",
 	"recontrasena":"1234"
 }
+
+iniciarSesion
+{
+	"rut_alumno":"20986948-9",
+	"contrasena":"12345"
+}
+
+Rutas protegidas
+http://localhost:9000/ruta-protegida
+Headers
+Authorization  Bearer token

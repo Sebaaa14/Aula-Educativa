@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2023 a las 06:36:03
+-- Tiempo de generación: 25-06-2023 a las 07:22:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -140,23 +140,36 @@ INSERT INTO `horariosbloques` (`id_bloque`, `hora_inicio`, `hora_fin`) VALUES
 
 CREATE TABLE `login` (
   `id_alumno` int(200) NOT NULL,
-  `hora` varchar(200) NOT NULL
+  `hora` varchar(200) NOT NULL,
+  `token` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `login`
 --
 
-INSERT INTO `login` (`id_alumno`, `hora`) VALUES
-(2, '2023-06-24 19:02:53.620'),
-(1, '2023-06-24 19:04:20.633'),
-(2, '2023-06-24 20:49:57.853'),
-(1, '2023-06-24 20:53:13.487'),
-(2, '2023-06-24 20:54:34.908'),
-(2, '2023-06-24 20:54:55.074'),
-(1, '2023-06-24 20:57:07.226'),
-(3, '2023-06-24 20:58:07.713'),
-(2, '2023-06-24 23:22:48.317');
+INSERT INTO `login` (`id_alumno`, `hora`, `token`) VALUES
+(2, '2023-06-24 19:02:53.620', ''),
+(1, '2023-06-24 19:04:20.633', ''),
+(2, '2023-06-24 20:49:57.853', ''),
+(1, '2023-06-24 20:53:13.487', ''),
+(2, '2023-06-24 20:54:34.908', ''),
+(2, '2023-06-24 20:54:55.074', ''),
+(1, '2023-06-24 20:57:07.226', ''),
+(3, '2023-06-24 20:58:07.713', ''),
+(2, '2023-06-24 23:22:48.317', ''),
+(2, '2023-06-25 01:00:22.337', ''),
+(2, '2023-06-25 01:00:42.924', ''),
+(2, '2023-06-25 01:01:38.946', ''),
+(2, '2023-06-25 01:01:49.134', ''),
+(2, '2023-06-25 01:04:51.410', ''),
+(2, '2023-06-25 01:05:32.382', ''),
+(2, '2023-06-25 01:13:22.375', ''),
+(2, '2023-06-25 01:16:37.755', ''),
+(2, '2023-06-25 01:20:20.057', ''),
+(2, '2023-06-25 01:20:50.059', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzY3MDQ1MCwiZXhwIjoxNjg3Njc0MDUwfQ.K2MSTvbrV8ffMFbd-eeloJWYnGg1hG7wwUtM-joW6e0'),
+(2, '2023-06-25 01:21:29.708', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzY3MDQ4OSwiZXhwIjoxNjg3Njc0MDg5fQ.WSs3Tnow0NlwSyCdK-VyFYzyL7TISozGiwTZtocEOzk'),
+(1, '2023-06-25 01:21:53.221', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5MTk5MDktMiIsImlhdCI6MTY4NzY3MDUxMywiZXhwIjoxNjg3Njc0MTEzfQ.td3b535iKtDRSvpuGk1JLl4ekPOEhHF9euvmVLqcFpQ');
 
 --
 -- Índices para tablas volcadas
