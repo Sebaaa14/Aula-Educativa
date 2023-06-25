@@ -90,7 +90,7 @@ export class RegistrateComponent {
     this.http.post('http://localhost:9000/registrarAlumno', requestBody).subscribe((response: any) => {
       if (response) {
         alert("Alumno registrado correctamente");
-        this.router.navigate(['home']);
+        this.router.navigate(['iniciar-sesion']);
       } 
     }, (error) => {
       console.error(error);

@@ -7,20 +7,20 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <div class="container text-center">
-                        <div class="row">
+                        <div class="row" *ngFor="let perfil of perfiles">
                             <h5 class="card-title"><mark>Informacion Alumno</mark></h5>
                             <div class="col ">
-                                <p class="card-text"><b>Nombre:</b> Nathalia Trigo</p>
-                                <p class="card-text"><b>Curso:</b> 4ºbasico</p>
-                                <p class="card-text"><b>Nombre Apoderado:</b> Diego Duran</p>
-                                <p class="card-text"><b>Número:</b> 976789234</p>
+                                <p class="card-text"><b>Nombre:</b> {{perfil.nombre}} </p>
+                                <p class="card-text"><b>Curso:</b> {{perfil.curso}} </p>
+                                <p class="card-text"><b>Nombre Apoderado:</b> {{perfil.apoderado}} </p>
+                                <p class="card-text"><b>Número:</b> {{perfil.telefono}}</p>
                             </div>
                             <div class="col">
-                                <p class="card-text"><b>Rut:</b> 20.919.909-2</p>
-                                <p class="card-text"><b>Colegio:</b> El Olivar</p>
-                                <p class="card-text"><b>Rut Apoderado:</b> 13564782-2</p>
-                                <p class="card-text"><b>Email:</b><a href="nathalia@trigo.pucv.cl">
-                                        nathaliatrigo@pucv.cl</a></p>
+                                <p class="card-text"><b>Rut:</b> {{perfil.rut_alumno}}</p>
+                                <p class="card-text"><b>Colegio:</b> El {{perfil.colegio}}</p>
+                                <p class="card-text"><b>Rut Apoderado:</b> {{perfil.rut_apoderado}}-2</p>
+                                <p class="card-text"><b>Email:</b><a>
+                                    {{perfil.email}}</a></p>
                             </div>
                         </div>
                     </div>

@@ -57,7 +57,7 @@ export class OlvidasteContrasenaComponent {
             alert("Contraseña actualizada correctamente");
             this.mostrarMensajeCompletado = true;
             this.mostrarMensajeError = false;
-            this.router.navigate(['home']);
+            this.router.navigate(['iniciar-sesion']);
           } else {
             // Error en el proceso de recuperación de contraseña
             this.mostrarMensajeCompletado = false;

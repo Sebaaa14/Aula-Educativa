@@ -52,6 +52,34 @@ app.get('/docentes', (req, res) => {
         }
     });
 });
+//Mi perfil
+app.get('/miPerfil', (req, res) => {
+    pool.query("SELECT id_alumno FROM login ORDER BY id_alumno ASC LIMIT 1", (error, resultsLogin) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("error en el servidor :c");
+        }
+        else {
+            // Caso donde sí se encuentra el id
+            const idAlumno = resultsLogin[0].id_alumno;
+            // Segunda query 
+            pool.query(`SELECT * FROM alumnos WHERE id_alumno = ${idAlumno}`, (error, resultsAlumnos) => {
+                if (error) {
+                    console.error("Error:", error);
+                    res.status(500).send("El alumno no se encuentra");
+                }
+                else {
+                    const miPerfil = {
+                        status: 'éxito',
+                        message: 'Alumno encontrado',
+                        data: resultsAlumnos
+                    };
+                    res.status(200).json(miPerfil);
+                }
+            });
+        }
+    });
+});
 //Post para registrar alumno
 app.post("/registrarAlumno", (req, res) => {
     const { nombre, rut_alumno, curso, colegio, contrasena, apoderado, rut_apoderado, email, telefono } = req.body;
@@ -64,7 +92,7 @@ app.post("/registrarAlumno", (req, res) => {
             pool.query("insert into alumnos (nombre,rut_alumno,curso,colegio,contrasena,apoderado,rut_apoderado,email,telefono) VALUES (?,?,?,?,?,?,?,?,?)", [nombre, rut_alumno, curso, colegio, hash, apoderado, rut_apoderado, email, telefono], (error, results) => {
                 if (error) {
                     console.error(error);
-                    res.status(500).send("error INSERTando en el server :c");
+                    res.status(500).send("error insertando en el server :c");
                 }
                 else {
                     const response = {
@@ -107,6 +135,11 @@ app.post("/iniciarSesion", (req, res) => {
                         data: alumno
                     };
                     res.status(200).json(response);
+                    //para insertar en la table de login
+                    const fechaActual = new Date();
+                    pool.query("insert into login (id_alumno, hora) VALUES (?,?)", [alumno.id_alumno, fechaActual], function (error, results, fields) {
+                        console.log("Datos insertados en la tabla log");
+                    });
                 }
             });
         }

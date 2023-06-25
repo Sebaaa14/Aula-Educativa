@@ -23,9 +23,9 @@ const pool = mysql.createPool({
 })
 
 //Get de alumnos
-app.get('/alumnos', (req:any, res:any) => {
-    pool.query("select * from alumnos", (error:any, results:any) => {
-        if (error){
+app.get('/alumnos', (req: any, res: any) => {
+    pool.query("select * from alumnos", (error: any, results: any) => {
+        if (error) {
             console.error(error);
             res.status(500).send("error en el server :c");
         } else {
@@ -40,9 +40,9 @@ app.get('/alumnos', (req:any, res:any) => {
 });
 
 //Get de docentes
-app.get('/docentes', (req:any, res:any) => {
-    pool.query("select * from docentes", (error:any, results:any) => {
-        if (error){
+app.get('/docentes', (req: any, res: any) => {
+    pool.query("select * from docentes", (error: any, results: any) => {
+        if (error) {
             console.error(error);
             res.status(500).send("error en el server :c");
         } else {
@@ -56,33 +56,60 @@ app.get('/docentes', (req:any, res:any) => {
     })
 });
 
-//Post para registrar alumno
-app.post("/registrarAlumno", (req:any,res:any) => {
-    
-    const {nombre,rut_alumno,curso,colegio,contrasena,apoderado,rut_apoderado,email,telefono} = req.body;
+//Mi perfil
+app.get('/miPerfil', (req: any, res: any) => {
+    pool.query("SELECT id_alumno FROM login ORDER BY id_alumno ASC LIMIT 1", (error: any, resultsLogin: any) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("error en el servidor :c");
+        } else {
+            // Caso donde sí se encuentra el id
+            const idAlumno = resultsLogin[0].id_alumno;
+            // Segunda query 
+            pool.query(`SELECT * FROM alumnos WHERE id_alumno = ${idAlumno}`, (error: any, resultsAlumnos: any) => {
+                if (error) {
+                    console.error("Error:", error);
+                    res.status(500).send("El alumno no se encuentra");
+                } else {
+                    const miPerfil = {
+                        status: 'éxito',
+                        message: 'Alumno encontrado',
+                        data: resultsAlumnos
+                    }
+                    res.status(200).json(miPerfil);
+                }
+            });
+        }
+    });
+});
 
-    bcrypt.hash(contrasena, 1, (error:any,hash:any) => {
-        if(error) {
+//Post para registrar alumno
+app.post("/registrarAlumno", (req: any, res: any) => {
+
+    const { nombre, rut_alumno, curso, colegio, contrasena, apoderado, rut_apoderado, email, telefono } = req.body;
+
+    bcrypt.hash(contrasena, 1, (error: any, hash: any) => {
+        if (error) {
             console.error(error);
             hash.status(500).send("error hasheando password")
         } else {
             pool.query(
                 "insert into alumnos (nombre,rut_alumno,curso,colegio,contrasena,apoderado,rut_apoderado,email,telefono) VALUES (?,?,?,?,?,?,?,?,?)",
-                [nombre,rut_alumno,curso,colegio,hash,apoderado,rut_apoderado,email,telefono],
-                (error:any, results:any) => {
-                        if(error){
-                            console.error(error);
-                            res.status(500).send("error INSERTando en el server :c");
-                        }else {
-                            const response = {
-                                status: 'exito',
-                                message: 'se insertaron los datos bien',
-                                data: results
-                            }
-                            res.status(200).json(response);
+                [nombre, rut_alumno, curso, colegio, hash, apoderado, rut_apoderado, email, telefono],
+                (error: any, results: any) => {
+                    if (error) {
+                        console.error(error);
+                        res.status(500).send("error insertando en el server :c");
+                    } else {
+                        const response = {
+                            status: 'exito',
+                            message: 'se insertaron los datos bien',
+                            data: results
                         }
+                        res.status(200).json(response);
                     }
-                );
+                }
+            );
         }
     });
 });
@@ -117,6 +144,12 @@ app.post("/iniciarSesion", (req: any, res: any) => {
                             data: alumno
                         };
                         res.status(200).json(response);
+
+                        //para insertar en la table de login
+                        const fechaActual: Date = new Date();
+                        pool.query("insert into login (id_alumno, hora) VALUES (?,?)", [alumno.id_alumno, fechaActual], function (error: any, results: any, fields: any) {
+                            console.log("Datos insertados en la tabla log");
+                        });
                     }
                 });
             }
@@ -126,7 +159,7 @@ app.post("/iniciarSesion", (req: any, res: any) => {
 
 //Post para recuperar Contraseña
 app.post("/recuperarContrasena", (req: any, res: any) => {
-    const {rut_alumno,contrasena,recontrasena} = req.body;
+    const { rut_alumno, contrasena, recontrasena } = req.body;
 
     pool.query("SELECT * FROM alumnos WHERE rut_alumno=?", [rut_alumno], function (error: any, results: any, fields: any) {
         if (error) {
@@ -141,21 +174,21 @@ app.post("/recuperarContrasena", (req: any, res: any) => {
 
                 if (contrasena === recontrasena) {
 
-                    bcrypt.hash(contrasena, 1, (error:any,hash:any) => {
-                    pool.query("UPDATE alumnos SET contrasena = ? WHERE rut_alumno = ?", [hash, rut_alumno], function (error: any, results: any, fields: any) {
-                        if (error) {
-                            console.log(error);
-                            res.send({ "mensaje": false, "resultado": "no se concreto" });
-                        } else {
-                            console.log("actualizada");
-                            res.send(JSON.stringify({ mensaje: true, resultado: 'Contraseña actualizada' }));
-                        }
+                    bcrypt.hash(contrasena, 1, (error: any, hash: any) => {
+                        pool.query("UPDATE alumnos SET contrasena = ? WHERE rut_alumno = ?", [hash, rut_alumno], function (error: any, results: any, fields: any) {
+                            if (error) {
+                                console.log(error);
+                                res.send({ "mensaje": false, "resultado": "no se concreto" });
+                            } else {
+                                console.log("actualizada");
+                                res.send(JSON.stringify({ mensaje: true, resultado: 'Contraseña actualizada' }));
+                            }
+                        });
                     });
-                });
                 } else {
                     res.send(JSON.stringify({ mensaje: false, resultado: 'Las contraseñas no coinciden' }));
                 }
-            } 
+            }
         } else {
             res.send(JSON.stringify({ mensaje: false, resultado: 'Usuario no registrado' }));
         }
