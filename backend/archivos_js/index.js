@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2');
@@ -165,10 +166,6 @@ function authenticateToken(req, res, next) {
         next();
     });
 }
-// Rutas protegidas
-app.get('/ruta-protegida', authenticateToken, (req, res) => {
-    res.send('Ruta protegida');
-});
 //put para recuperar Contraseña
 app.put("/recuperarContrasena", (req, res) => {
     const { rut_alumno, contrasena, recontrasena } = req.body;
@@ -207,18 +204,85 @@ app.put("/recuperarContrasena", (req, res) => {
 });
 //Get del horario del alumno
 app.get('/horario', (req, res) => {
-    pool.query("SELECT * FROM horarios", (error, resultadoHorario) => {
+    pool.query("Select id_alumno from login order by hora desc limit 1", (error, resultsHorario) => {
         if (error) {
             console.error(error);
             res.status(500).send("error en el servidor :c");
         }
         else {
-            const horario = {
-                status: 'éxito',
-                message: 'Horario cargado',
-                data: resultadoHorario
-            };
-            res.status(200).json(horario);
+            // Caso donde sí se encuentra el id
+            const idAlumno = resultsHorario[0].id_alumno;
+            // Segunda query 
+            pool.query(`SELECT * FROM horarios where id_alumno = ${idAlumno}`, (error, resultadoHorario) => {
+                if (error) {
+                    console.error(error);
+                    res.status(500).send("error en el servidor :c");
+                }
+                else {
+                    const horario = {
+                        status: 'éxito',
+                        message: 'Horario cargado',
+                        data: resultadoHorario
+                    };
+                    res.status(200).json(horario);
+                }
+            });
+        }
+    });
+});
+//Get de las notas del alumno
+app.get('/notas', (req, res) => {
+    pool.query("Select id_alumno from login order by hora desc limit 1", (error, resultsNotas) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("error en el servidor :c");
+        }
+        else {
+            // Caso donde sí se encuentra el id
+            const idAlumno = resultsNotas[0].id_alumno;
+            // Segunda query 
+            pool.query(`SELECT * FROM notas where id_alumno = ${idAlumno}`, (error, resultadoNotas) => {
+                if (error) {
+                    console.error(error);
+                    res.status(500).send("error en el servidor :c");
+                }
+                else {
+                    const notas = {
+                        status: 'éxito',
+                        message: 'Notas cargadas',
+                        data: resultadoNotas
+                    };
+                    res.status(200).json(notas);
+                }
+            });
+        }
+    });
+});
+//Mi perfil
+app.get('/miPerfil', (req, res) => {
+    pool.query("SELECT id_alumno FROM login ORDER BY hora DESC LIMIT 1", (error, resultsLogin) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("error en el servidor :c");
+        }
+        else {
+            // Caso donde sí se encuentra el id
+            const idAlumno = resultsLogin[0].id_alumno;
+            // Segunda query 
+            pool.query(`SELECT * FROM alumnos WHERE id_alumno = ${idAlumno}`, (error, resultsAlumnos) => {
+                if (error) {
+                    console.error("Error:", error);
+                    res.status(500).send("El alumno no se encuentra");
+                }
+                else {
+                    const miPerfil = {
+                        status: 'éxito',
+                        message: 'Alumno encontrado',
+                        data: resultsAlumnos
+                    };
+                    res.status(200).json(miPerfil);
+                }
+            });
         }
     });
 });
@@ -231,12 +295,12 @@ app.get('/bloqueHorario', (req, res) => {
             res.status(500).send("error en el servidor :c");
         }
         else {
-            const horario = {
+            const bloqueHorario = {
                 status: 'éxito',
                 message: 'Horario cargado',
                 data: resultadoHorario
             };
-            res.status(200).json(horario);
+            res.status(200).json(bloqueHorario);
         }
     });
 });

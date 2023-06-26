@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/authorization/auth.service';
-import { Route } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import { Route } from '@angular/router';
 })
 
 export class HeaderComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   sesionIniciada(): boolean {
     return this.authService.isAuthenticated();
@@ -17,5 +17,7 @@ export class HeaderComponent {
 
   cerrarSesion(): void {
     this.authService.logout();
+    alert("Sesion caducada");
+    this.router.navigate(['/']);
   }
 }

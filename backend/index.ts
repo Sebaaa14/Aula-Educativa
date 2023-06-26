@@ -1,3 +1,5 @@
+import { error } from "console";
+
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql2')
@@ -119,47 +121,47 @@ app.post("/registrarAlumno", (req: any, res: any) => {
 
 //Post para iniciar sesion
 app.post("/iniciarSesion", (req: any, res: any) => {
-  const { rut_alumno, contrasena } = req.body;
+    const { rut_alumno, contrasena } = req.body;
 
-  pool.query(
-    "SELECT * FROM alumnos WHERE rut_alumno = ?",
-    [rut_alumno],
-    (error: any, results: any) => {
-      if (error) {
-        console.error(error);
-        res.status(500).send("error consultando en el servidor");
-      } else if (results.length === 0) {
-        res.status(404).send("El alumno no existe");
-      } else {
-        const alumno = results[0];
+    pool.query(
+        "SELECT * FROM alumnos WHERE rut_alumno = ?",
+        [rut_alumno],
+        (error: any, results: any) => {
+            if (error) {
+                console.error(error);
+                res.status(500).send("error consultando en el servidor");
+            } else if (results.length === 0) {
+                res.status(404).send("El alumno no existe");
+            } else {
+                const alumno = results[0];
 
-        // Comparar la contraseña ingresada con el hash almacenado en la base de datos
-        bcrypt.compare(contrasena, alumno.contrasena, (compareError: any, isMatch: boolean) => {
-          if (compareError) {
-            console.error(compareError);
-            res.status(500).send("error comparando las claves");
-          } else if (!isMatch) {
-            res.status(400).send("La clave ingresada es incorrecta");
-          } else {
-            const response = {
-              status: "exito",
-              message: "Inicio de sesión exitoso",
-              data: alumno,
-              token: jwt.sign({ rut_alumno }, secretKey, { expiresIn: '1h' }) // Agrega el token al objeto de respuesta
-            };
+                // Comparar la contraseña ingresada con el hash almacenado en la base de datos
+                bcrypt.compare(contrasena, alumno.contrasena, (compareError: any, isMatch: boolean) => {
+                    if (compareError) {
+                        console.error(compareError);
+                        res.status(500).send("error comparando las claves");
+                    } else if (!isMatch) {
+                        res.status(400).send("La clave ingresada es incorrecta");
+                    } else {
+                        const response = {
+                            status: "exito",
+                            message: "Inicio de sesión exitoso",
+                            data: alumno,
+                            token: jwt.sign({ rut_alumno }, secretKey, { expiresIn: '1h' }) // Agrega el token al objeto de respuesta
+                        };
 
-            //para insertar en la tabla de login
-            const fechaActual: Date = new Date();
-            pool.query("insert into login (id_alumno, hora,token) VALUES (?,?,?)", [alumno.id_alumno, fechaActual, response.token], function (error: any, results: any, fields: any) {
-              console.log("Datos insertados en la tabla log");
-            });
+                        //para insertar en la tabla de login
+                        const fechaActual: Date = new Date();
+                        pool.query("insert into login (id_alumno, hora,token) VALUES (?,?,?)", [alumno.id_alumno, fechaActual, response.token], function (error: any, results: any, fields: any) {
+                            console.log("Datos insertados en la tabla log");
+                        });
 
-            res.status(200).json(response);
-          }
-        });
-      }
-    }
-  );
+                        res.status(200).json(response);
+                    }
+                });
+            }
+        }
+    );
 });
 
 
@@ -182,12 +184,6 @@ function authenticateToken(req: any, res: any, next: any) {
         next();
     });
 }
-
-
-// Rutas protegidas
-app.get('/ruta-protegida', authenticateToken, (req: any, res: any) => {
-    res.send('Ruta protegida');
-});
 
 //put para recuperar Contraseña
 app.put("/recuperarContrasena", (req: any, res: any) => {
@@ -229,17 +225,81 @@ app.put("/recuperarContrasena", (req: any, res: any) => {
 
 //Get del horario del alumno
 app.get('/horario', (req: any, res: any) => {
-    pool.query("SELECT * FROM horarios", (error: any, resultadoHorario: any) => {
+    pool.query("Select id_alumno from login order by hora desc limit 1", (error: any, resultsHorario: any) => {
         if (error) {
             console.error(error);
             res.status(500).send("error en el servidor :c");
         } else {
-            const horario = {
-                status: 'éxito',
-                message: 'Horario cargado',
-                data: resultadoHorario
-            }
-            res.status(200).json(horario);
+            // Caso donde sí se encuentra el id
+            const idAlumno = resultsHorario[0].id_alumno;
+            // Segunda query 
+            pool.query(`SELECT * FROM horarios where id_alumno = ${idAlumno}`, (error: any, resultadoHorario: any) => {
+                if (error) {
+                    console.error(error);
+                    res.status(500).send("error en el servidor :c");
+                } else {
+                    const horario = {
+                        status: 'éxito',
+                        message: 'Horario cargado',
+                        data: resultadoHorario
+                    }
+                    res.status(200).json(horario);
+                }
+            });
+        }
+    })
+});
+
+//Get de las notas del alumno
+app.get('/notas', (req: any, res: any) => {
+    pool.query("Select id_alumno from login order by hora desc limit 1", (error: any, resultsNotas: any) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("error en el servidor :c");
+        } else {
+            // Caso donde sí se encuentra el id
+            const idAlumno = resultsNotas[0].id_alumno;
+            // Segunda query 
+            pool.query(`SELECT * FROM notas where id_alumno = ${idAlumno}`, (error: any, resultadoNotas: any) => {
+                if (error) {
+                    console.error(error);
+                    res.status(500).send("error en el servidor :c");
+                } else {
+                    const notas = {
+                        status: 'éxito',
+                        message: 'Notas cargadas',
+                        data: resultadoNotas
+                    }
+                    res.status(200).json(notas);
+                }
+            });
+        }
+    })
+});
+
+//Mi perfil
+app.get('/miPerfil', (req: any, res: any) => {
+    pool.query("SELECT id_alumno FROM login ORDER BY hora DESC LIMIT 1", (error: any, resultsLogin: any) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("error en el servidor :c");
+        } else {
+            // Caso donde sí se encuentra el id
+            const idAlumno = resultsLogin[0].id_alumno;
+            // Segunda query 
+            pool.query(`SELECT * FROM alumnos WHERE id_alumno = ${idAlumno}`, (error: any, resultsAlumnos: any) => {
+                if (error) {
+                    console.error("Error:", error);
+                    res.status(500).send("El alumno no se encuentra");
+                } else {
+                    const miPerfil = {
+                        status: 'éxito',
+                        message: 'Alumno encontrado',
+                        data: resultsAlumnos
+                    }
+                    res.status(200).json(miPerfil);
+                }
+            });
         }
     });
 });
@@ -252,12 +312,12 @@ app.get('/bloqueHorario', (req: any, res: any) => {
             console.error(error);
             res.status(500).send("error en el servidor :c");
         } else {
-            const horario = {
+            const bloqueHorario = {
                 status: 'éxito',
                 message: 'Horario cargado',
                 data: resultadoHorario
             }
-            res.status(200).json(horario);
+            res.status(200).json(bloqueHorario);
         }
     });
 });

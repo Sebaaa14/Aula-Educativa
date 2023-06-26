@@ -37,7 +37,6 @@ export class HorarioUsuarioComponent implements OnInit {
       }
     );
   }
-
   
   obtenerHoraPorBloque(bloque: number): string {
     if (this.bloqueHorario && this.bloqueHorario[bloque - 1]) {

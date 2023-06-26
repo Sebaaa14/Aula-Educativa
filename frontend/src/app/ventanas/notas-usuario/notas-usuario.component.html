@@ -1,31 +1,18 @@
-
-  <!-- Section Home -->
-  <section>
-    <table class="table table-light table-striped">
-      <thead class="table-dark table-striped">
-        <tr>
-          <th scope="col">Asignatura</th>
-          <th scope="col">Nota</th>
-          <th scope="col">Promedio</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Fisica</th>
-          <td>5.4</td>
-          <td>5.4</td>
-        </tr>
-        <tr>
-          <th scope="row">Matematicas</th>
-          <td>4.0</td>
-          <td>4.0</td>
-        </tr>
-        <tr>
-          <th scope="row">Biologia</th>
-          <td>6.2</td>
-          <td>6.2</td>
-        </tr>
-      </tbody>
-    </table>
-
-  </section>
+<section>
+  <table class="table table-light table-striped">
+    <thead class="table-dark table-striped">
+      <tr>
+        <th scope="col">AsignaturaS</th>
+        <th scope="col">Notas</th>
+        <th scope="col">Promedio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nota of notas">
+        <td>{{ nota.asignatura }}</td>
+        <td>{{ nota.notas.join(' - ') }}</td>
+        <td> {{nota.promedio}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

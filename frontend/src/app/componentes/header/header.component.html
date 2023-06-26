@@ -1,22 +1,45 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
     <div class="container justify-content-center mx-auto">
-      <div class="col" style="width: 33%; flex-basis: 0;">
+      <div class="col" style="width: 33%; flex-basis: 0; display: flex; align-items: center; justify-content: flex-start;">
         <a routerLink=""><h4>Aula Educativa</h4></a>
-      </div>
-      <div class="col" style="width: 33%; flex-basis: 0;">
+      </div>      
+      <div class="col text-center" style="width: 33%; flex-basis: 0;">
         <a *ngIf="!sesionIniciada()" routerLink="">
           <img src="assets\img_header\logo_sin_registrar.png" width="15%" height="auto" class="d-inline-block align-top" alt="Logo">
         </a>
       </div>
-      <div class="col" style="width: 33%; flex-basis: 0;">
-        <button *ngIf="!sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="iniciar-sesion">Iniciar Sesión</button>
-        <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="horario">Horario</button>
-        <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="notas">Notas</button>
-        <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="docentes">Docentes</button>
-        <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="participantes">Participantes</button>
-        <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="perfil">Perfil</button>
-        <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" (click)="cerrarSesion()">Cerrar Sesión</button>
+      <div class="col text-right" style="width: 33%; flex-basis: 0;">
+         <nav class="navbar navbar-expand-lg">
+          <button class="navbar-toggler" type="button" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div>
+            <ul class="navbar-nav mx-auto mx-2 mx-lg-2">
+              <li class="nav-item">
+                <button *ngIf="!sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="iniciar-sesion">Iniciar Sesión</button>
+              </li>
+              <li class="nav-item">
+                <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="horario">Horario</button>
+              </li>
+              <li class="nav-item" style="margin-left: auto;">
+                <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="notas">Notas</button>
+              </li>
+              <li class="nav-item">
+                <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="docentes">Docentes</button>
+              </li>
+              <li class="nav-item">
+                <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="participantes">Participantes</button>
+              </li>
+              <li class="nav-item">
+                <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="perfil">Perfil</button>
+              </li>
+              <li class="nav-item">
+                <button *ngIf="sesionIniciada()" class="btn btn-outline-success" type="submit" (click)="cerrarSesion()">Cerrar Sesión</button>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
     </div>
   </nav>
