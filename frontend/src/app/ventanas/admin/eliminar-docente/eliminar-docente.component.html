@@ -1,1 +1,33 @@
-<p>eliminar-docente works!</p>
+<div class="row align-items-center justify-content-center form-container">
+    <div class="col-md-6">
+        <h2>Eliminar Docente</h2>
+        <label for="idDocente">Identificador del Docente</label>
+        <input type="text" id="idDocente" #idDocenteInput>
+        <div class="text-center">
+            <button class="btn btn-primary" (click)="eliminarDocente(idDocenteInput.value)">Eliminar
+                Docente</button>
+        </div>
+        <div class="formulario_grupo formulario_grupo-btn-enviar">
+        </div>
+        <br><button class="btn btn-primary" routerLink="/admin">Volver al menu de administrador</button>
+
+        <br>
+        <div class="col text-center">
+            <h4>Lista de Docentes </h4>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Nombre del Docente</th>
+                  <th>Identificador del Docente</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let docente of docentes">
+                  <td>{{ docente.nombre }}</td>
+                  <td>{{ docente.id_profesor }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+</div>

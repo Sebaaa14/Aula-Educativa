@@ -321,6 +321,7 @@ app.get('/bloqueHorario', (req, res) => {
         }
     });
 });
+//Eliminar alumno
 app.delete("/eliminarAlumno/:rut_alumno", (req, res) => {
     const alumno = req.params.rut_alumno;
     pool.query("DELETE FROM alumnos WHERE rut_alumno = ?", [alumno], (error, results) => {
@@ -333,6 +334,23 @@ app.delete("/eliminarAlumno/:rut_alumno", (req, res) => {
         }
         else {
             res.status(200).json({ message: "Alumno eliminado correctamente" });
+        }
+    });
+});
+//Eliminar docente
+app.delete("/eliminarDocente/:id_profesor", (req, res) => {
+    const docente = req.params.id_profesor;
+    console.log(docente);
+    pool.query("DELETE FROM docentes WHERE id_profesor = ?", [docente], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: "Error eliminando al docente" });
+        }
+        else if (results.affectedRows === 0) {
+            res.status(404).json({ error: "El docente no existe" });
+        }
+        else {
+            res.status(200).json({ message: "Docente eliminado correctamente" });
         }
     });
 });
