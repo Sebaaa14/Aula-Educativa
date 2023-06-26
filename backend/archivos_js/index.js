@@ -110,6 +110,24 @@ app.post("/registrarAlumno", (req, res) => {
         }
     });
 });
+//Registrar docente
+app.post("/registrarDocente", (req, res) => {
+    const { nombre, email, horario, rol } = req.body;
+    pool.query("insert into docentes (nombre,email,horario,rol) VALUES (?,?,?,?)", [nombre, email, horario, rol], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("error insertando en el server :c");
+        }
+        else {
+            const response = {
+                status: 'exito',
+                message: 'se insertaron los datos bien',
+                data: results
+            };
+            res.status(200).json(response);
+        }
+    });
+});
 //Post para iniciar sesion
 app.post("/iniciarSesion", (req, res) => {
     const { rut_alumno, contrasena } = req.body;

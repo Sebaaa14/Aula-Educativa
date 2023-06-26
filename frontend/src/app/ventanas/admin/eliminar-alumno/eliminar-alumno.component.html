@@ -1,6 +1,14 @@
-<div class="row añadir-alumno">
-    <h2>Eliminar Alumnos</h2>
-    <label for="rutAlumno">Rut del Alumno:</label>
-    <input type="text" id="rutAlumno" #rutAlumnoInput>
-    <button (click)="eliminarAlumno(rutAlumnoInput.value)">Eliminar Alumno</button>
+<div class="row align-items-center justify-content-center form-container">
+    <div class="col-md-6">
+        <h2>Eliminar Alumno</h2>
+        <label for="rutAlumno">Rut del Alumno:</label>
+        <input type="text" id="rutAlumno" #rutAlumnoInput>
+        <div class="text-center">
+            <button class="btn btn-primary" (click)="eliminarAlumno(rutAlumnoInput.value)">Eliminar Alumno</button>
+        </div>
+        <div class="formulario_grupo formulario_grupo-btn-enviar">
+        </div>
+        <br><button class="btn btn-primary" routerLink="/admin">Volver al menu de administrador</button>
+    </div>
+
 </div>

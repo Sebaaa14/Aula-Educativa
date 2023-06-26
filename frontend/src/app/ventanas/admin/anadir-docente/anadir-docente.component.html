@@ -1,1 +1,78 @@
 <p>anadir-docente works!</p>
+id_profesor
+nombre 
+email
+horario
+rol
+
+
+<div class="row align-items-center">
+    <div class="añadir-alumno">
+
+        <form [formGroup]="registrateForm" class="formulario" id="formulario">
+            <h2 class="añadir-alumno-titulo">Añadir Docente</h2>
+            <div class="formulario_grupo" id="grupo_nombre"
+                [class.formulario_grupo-incorrecto]="validarCampo('nombre')">
+                <label for="nombre" class="formulario_label">Nombre y Apellido</label>
+                <div class="formulario_grupo-input">
+                    <input type="text" class="formulario_input" formControlName="nombre" name="nombre" id="nombre"
+                        placeholder="Nombre Apellido">
+                    <p *ngIf="validarCampo('nombre')" class="text-danger">Nombre y Apellido</p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="grupo_correo"
+                [class.formulario_grupo-incorrecto]="validarCampo('correo')">
+                <label for="correo" class="formulario_label">Email</label>
+                <div class="formulario_grupo-input">
+                    <input type="email" class="formulario_input" formControlName="correo" name="correo" id="correo"
+                        placeholder="ejemplo@gmail.com">
+                    <p class="text-danger" *ngIf="validarCampo('correo')">El correo solo puede contener letras, números,
+                        puntos, guiones y guion bajo.</p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="horario"
+                [class.formulario_grupo-incorrecto]="validarCampo('horario')">
+                <label for="horario" class="formulario_label">Horario</label>
+                <div class="formulario_grupo-input">
+                    <input type="text" class="formulario_input" formControlName="horario" name="horario" id="horario"
+                        placeholder="Lunes 14:30">
+                    <p class="text-danger" *ngIf="validarCampo('horario')">Valide su horario.</p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="rol"
+                [class.formulario_grupo-incorrecto]="validarCampo('rol')">
+                <label for="rol" class="formulario_label">Rol</label>
+                <div class="formulario_grupo-input">
+                    <input type="text" class="formulario_input" formControlName="rol" name="rol" id="rol"
+                        placeholder="Profesor de matematicas">
+                    <p class="text-danger" *ngIf="validarCampo('rol')">Valide su rol.</p>
+                </div>
+            </div>
+
+
+
+
+            <div class="formulario_mensaje" id="formulario_mensaje"
+                *ngIf="!registrateForm.valid && registrateForm.touched">
+                <p class="fas fa-exclamation-triangle"> <b>Error:</b> Por favor rellena el formulario correctamente.</p>
+            </div>
+
+
+            <div class="formulario_grupo formulario_grupo-btn-enviar">
+                <button type="submit" class="formulario_btn btn" (click)="registrate()"
+                    (keyup.enter)="registrate()">Añadir Docente</button>
+            </div>
+
+            <div class="formulario_grupo formulario_grupo-btn-enviar">
+                <button type="button" class="formulario_btn btn" routerLink="/admin">Volver al menu de administrador</button>
+            </div>
+        </form>
+
+    </div>
+
+
+</div>
+
