@@ -10,3 +10,10 @@
     color: white;
     word-wrap: break-word;
 }
+
+.imagen {
+    background-image: url("/assets/fondos/fondo_sin_registrar.png");
+    background-position: center center;
+    background-size: cover;
+    min-height: 99vh;
+}
