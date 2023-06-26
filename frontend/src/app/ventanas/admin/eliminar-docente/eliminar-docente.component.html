@@ -1,33 +1,37 @@
-<div class="row align-items-center justify-content-center form-container">
-    <div class="col-md-6">
-        <h2>Eliminar Docente</h2>
-        <label for="idDocente">Identificador del Docente</label>
-        <input type="text" id="idDocente" #idDocenteInput>
-        <div class="text-center">
-            <button class="btn btn-primary" (click)="eliminarDocente(idDocenteInput.value)">Eliminar
-                Docente</button>
-        </div>
-        <div class="formulario_grupo formulario_grupo-btn-enviar">
-        </div>
-        <br><button class="btn btn-primary" routerLink="/admin">Volver al menu de administrador</button>
-
-        <br>
-        <div class="col text-center">
-            <h4>Lista de Docentes </h4>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Nombre del Docente</th>
-                  <th>Identificador del Docente</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let docente of docentes">
-                  <td>{{ docente.nombre }}</td>
-                  <td>{{ docente.id_profesor }}</td>
-                </tr>
-              </tbody>
-            </table>
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+          <h2 class="text-center">Eliminar Docente</h2>
+          <div class="form-group">
+              <label for="idDocente">Identificador del Docente:</label>
+              <input type="text" class="form-control" id="idDocente" #idDocenteInput>
           </div>
-    </div>
+          <div class="text-center">
+              <button class="btn btn-primary" (click)="eliminarDocente(idDocenteInput.value)">Eliminar Docente</button>
+          </div>
+          <br>
+          <div class="text-center">
+              <button class="btn btn-primary" routerLink="/admin">Volver al menú de administrador</button>
+          </div>
+
+          <br>
+          <div class="text-center">
+              <h4>Lista de Docentes</h4>
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Nombre del Docente</th>
+                          <th>Identificador del Docente</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let docente of docentes">
+                          <td>{{ docente.nombre }}</td>
+                          <td>{{ docente.id_profesor }}</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
 </div>
