@@ -17,9 +17,9 @@ import { RegistrateComponent } from './ventanas/registrate/registrate.component'
 import { FooterComponent } from './componentes/footer/footer.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule,HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CanActivateFn } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { AuthInterceptor } from './services/AuthInterceptor/auth.interceptor.interceptor';
 
 @NgModule({
@@ -38,6 +38,7 @@ import { AuthInterceptor } from './services/AuthInterceptor/auth.interceptor.int
     RegistrateComponent,
     FooterComponent,
     HeaderComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -46,7 +47,8 @@ import { AuthInterceptor } from './services/AuthInterceptor/auth.interceptor.int
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [{
+  providers: [
+    CookieService,{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

@@ -1,5 +1,3 @@
-// auth.guard.ts
-
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { AuthService } from '../authorization/auth.service';
@@ -14,9 +12,14 @@ export class AuthGuard implements CanActivate {
     if (this.authService.isAuthenticated()) {
       return true;
     } else {
-      console.log(this.authService.getToken());
-      this.router.navigate(['/iniciar-sesion']); // Redireccionar al usuario a la página de inicio de sesión
-      return false;
+      const token = this.authService.getToken();
+      console.log(token);
+      if (token) {
+        return true;
+      } else {
+        this.router.navigate(['/iniciar-sesion']); // Redireccionar al usuario a la página de inicio de sesión
+        return false;
+      }
     }
   }
 }
