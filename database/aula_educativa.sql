@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2023 a las 07:22:37
+-- Tiempo de generación: 26-06-2023 a las 07:52:55
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -107,7 +107,9 @@ INSERT INTO `horarios` (`id_horario`, `dia`, `id_bloque`, `id_alumno`, `nombre_c
 (1, 'Lunes', 1, 2, 'Lenguaje'),
 (2, 'Jueves', 1, 2, 'Matemáticas'),
 (3, 'Viernes', 3, 2, 'Filosofía'),
-(4, 'Martes', 4, NULL, 'Física');
+(4, 'Martes', 4, 2, 'Física'),
+(5, 'Jueves', 1, 1, 'Matematicas'),
+(6, 'Lunes', 4, 1, 'Filosofia');
 
 -- --------------------------------------------------------
 
@@ -149,27 +151,61 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id_alumno`, `hora`, `token`) VALUES
-(2, '2023-06-24 19:02:53.620', ''),
-(1, '2023-06-24 19:04:20.633', ''),
-(2, '2023-06-24 20:49:57.853', ''),
-(1, '2023-06-24 20:53:13.487', ''),
-(2, '2023-06-24 20:54:34.908', ''),
-(2, '2023-06-24 20:54:55.074', ''),
-(1, '2023-06-24 20:57:07.226', ''),
-(3, '2023-06-24 20:58:07.713', ''),
-(2, '2023-06-24 23:22:48.317', ''),
-(2, '2023-06-25 01:00:22.337', ''),
-(2, '2023-06-25 01:00:42.924', ''),
-(2, '2023-06-25 01:01:38.946', ''),
-(2, '2023-06-25 01:01:49.134', ''),
-(2, '2023-06-25 01:04:51.410', ''),
-(2, '2023-06-25 01:05:32.382', ''),
-(2, '2023-06-25 01:13:22.375', ''),
-(2, '2023-06-25 01:16:37.755', ''),
-(2, '2023-06-25 01:20:20.057', ''),
-(2, '2023-06-25 01:20:50.059', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzY3MDQ1MCwiZXhwIjoxNjg3Njc0MDUwfQ.K2MSTvbrV8ffMFbd-eeloJWYnGg1hG7wwUtM-joW6e0'),
-(2, '2023-06-25 01:21:29.708', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzY3MDQ4OSwiZXhwIjoxNjg3Njc0MDg5fQ.WSs3Tnow0NlwSyCdK-VyFYzyL7TISozGiwTZtocEOzk'),
-(1, '2023-06-25 01:21:53.221', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5MTk5MDktMiIsImlhdCI6MTY4NzY3MDUxMywiZXhwIjoxNjg3Njc0MTEzfQ.td3b535iKtDRSvpuGk1JLl4ekPOEhHF9euvmVLqcFpQ');
+(2, '2023-06-25 18:10:02.046', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzczMTAwMiwiZXhwIjoxNjg3NzM0NjAyfQ.3DqSjQWqn8VIDg-SKgd2bBeUpAsprVOoOlP1KikIqPg'),
+(2, '2023-06-25 18:24:44.092', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzczMTg4NCwiZXhwIjoxNjg3NzM1NDg0fQ._IrJKU1lQPRhYLecEKAKWJz4Q4v2-h_BwpRC_aJPVmc'),
+(2, '2023-06-25 18:26:06.239', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzczMTk2NiwiZXhwIjoxNjg3NzM1NTY2fQ._NcZ04qs9-rulMIbV0-YwC9X5-V9dGQSilClNDGhdAE'),
+(2, '2023-06-25 18:27:20.643', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzczMjA0MCwiZXhwIjoxNjg3NzM1NjQwfQ.7cIVwLNCXtx8poGicEhHTITYvGn2IJBzVxTCpzGPC7I'),
+(3, '2023-06-25 18:28:30.675', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtNSIsImlhdCI6MTY4NzczMjExMCwiZXhwIjoxNjg3NzM1NzEwfQ.cIvuZNheEcZbzZf3kd4dk4_8SNlGUm7jdi6foZ96DPc'),
+(1, '2023-06-25 20:28:08.938', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5MTk5MDktMiIsImlhdCI6MTY4NzczOTI4OCwiZXhwIjoxNjg3NzQyODg4fQ.w04kwYBhmnw7LiTNmI57OU8EndGN5bUWPhAeZz_t0Q0'),
+(1, '2023-06-25 20:30:07.541', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5MTk5MDktMiIsImlhdCI6MTY4NzczOTQwNywiZXhwIjoxNjg3NzQzMDA3fQ.dX-TqKZDgKtykh49499jABZQEeDOJIH2S9VPaRY8ZqE'),
+(2, '2023-06-25 20:38:16.240', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzczOTg5NiwiZXhwIjoxNjg3NzQzNDk2fQ.Cj3a4ZxQthEPOu0K6KCHtBbsCeQuIjMCmXSEhzEEhmc'),
+(2, '2023-06-25 20:40:19.036', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc0MDAxOSwiZXhwIjoxNjg3NzQzNjE5fQ.-sjmkIoUpaZWTN2Z6Cfo7sO_xdGokLhUbYxhJW4tvRE'),
+(2, '2023-06-25 21:02:57.747', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc0MTM3NywiZXhwIjoxNjg3NzQ0OTc3fQ.ANuzjlygDbl4hF5yhJeP4MPxMgp12WBs4PblyViBYPo'),
+(2, '2023-06-25 21:04:33.760', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc0MTQ3MywiZXhwIjoxNjg3NzQ1MDczfQ.2vJTQyqhfBWIBqmr4W2wJjmhowBD9GeY9GuuwKAnkRY'),
+(2, '2023-06-25 23:53:02.792', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1MTU4MiwiZXhwIjoxNjg3NzU1MTgyfQ.k0XfvSpL2KjmDVDftYUhN4ROAHU07bt41e_afXsWx0s'),
+(2, '2023-06-25 23:55:15.463', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1MTcxNSwiZXhwIjoxNjg3NzU1MzE1fQ.abTwO5e3XcKRBSbD3rtzhxvQyrIllpS2FAsvN3ZBXbA'),
+(2, '2023-06-25 23:56:51.651', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1MTgxMSwiZXhwIjoxNjg3NzU1NDExfQ.Z78RxXLSNU8D57d0-CIyo6sAqy9SPHC89moeP6dSQ9Y'),
+(2, '2023-06-26 00:04:37.717', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1MjI3NywiZXhwIjoxNjg3NzU1ODc3fQ.ycHUEywv7jqyf34Ccv-6aSEJJv1LDWXONCh5ko3Fs6I'),
+(1, '2023-06-26 00:04:54.681', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5MTk5MDktMiIsImlhdCI6MTY4Nzc1MjI5NCwiZXhwIjoxNjg3NzU1ODk0fQ.Iny3C9bVaRihOuSLniydQRjOPX_9lpylPYT1PYSm2Hk'),
+(2, '2023-06-26 00:08:52.019', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1MjUzMiwiZXhwIjoxNjg3NzU2MTMyfQ.PRtDbhXlNchqw6litnl1uiT2CPvuL9YvFyIGDSo5XB0'),
+(2, '2023-06-26 01:12:08.442', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1NjMyOCwiZXhwIjoxNjg3NzU5OTI4fQ.QUUvnbMu5xaQMWXxikFo347IVzMK1ANtj0AcJ32hxMA'),
+(2, '2023-06-26 01:12:21.274', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1NjM0MSwiZXhwIjoxNjg3NzU5OTQxfQ.V9dAjhDFRwMXWVfNr3St5KrchhHKeR16MVQCAQ8CYe0'),
+(2, '2023-06-26 01:12:43.168', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1NjM2MywiZXhwIjoxNjg3NzU5OTYzfQ.0tSH7qKkvrZd9XfESWaXqqVghbpDYxgUpnwfI_qLSMc'),
+(2, '2023-06-26 01:13:43.675', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1NjQyMywiZXhwIjoxNjg3NzYwMDIzfQ.pivOAU4isToMqKTcuGkzcNNroUTnj25yaQu2WCqWO_w'),
+(2, '2023-06-26 01:25:58.095', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1NzE1OCwiZXhwIjoxNjg3NzYwNzU4fQ.SvkR4xbHwUMWzkKGqNIjBcRtdnuOCD_HyTpAqiRjvaw'),
+(2, '2023-06-26 01:26:14.420', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1NzE3NCwiZXhwIjoxNjg3NzYwNzc0fQ.WgplovJrVhJ09DuR5ydMtQJvYcIIGHpBS2Xm56aPLjY'),
+(2, '2023-06-26 01:28:22.641', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1NzMwMiwiZXhwIjoxNjg3NzYwOTAyfQ.jnDC3Ey7uAmAaiL3e0-rWeF4Qgtm9NuzP9KkSVnpfZY'),
+(2, '2023-06-26 01:33:33.772', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1NzYxMywiZXhwIjoxNjg3NzYxMjEzfQ.Y-CSriNaGNeT30eQ-uvQiniIz1udZaavzSXlulY-mnw'),
+(2, '2023-06-26 01:35:14.739', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1NzcxNCwiZXhwIjoxNjg3NzYxMzE0fQ.1sQThlmDIJrdr1tpb85fqz99E7DROxeMRx3mH-BTmAM'),
+(2, '2023-06-26 01:39:04.912', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1Nzk0NCwiZXhwIjoxNjg3NzYxNTQ0fQ.jxCUslwoiVxr66DZDCQDiXp6Bz747bqoKpY22tNwLWo'),
+(2, '2023-06-26 01:49:09.103', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1ODU0OSwiZXhwIjoxNjg3NzYyMTQ5fQ.YGzNHES6Ov_7VswlUruUqB-YT4sceryn5UQr018cjrg'),
+(2, '2023-06-26 01:50:43.090', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1ODY0MywiZXhwIjoxNjg3NzYyMjQzfQ.neCW4nKCAcPL1itugsb0cOecZ-8pePCcEFa4cJUZpwI'),
+(2, '2023-06-26 01:51:11.266', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1ODY3MSwiZXhwIjoxNjg3NzYyMjcxfQ.pMXsRA5_3_kKCrHgSxP27XNYhdP_eOEiAV9wv34AHUA'),
+(2, '2023-06-26 01:52:27.855', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1ODc0NywiZXhwIjoxNjg3NzYyMzQ3fQ.YFr1Hs9qJP-dcj8QnkKUAHnwDSgH7FOFgyhwQqevmmA');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `notas`
+--
+
+CREATE TABLE `notas` (
+  `id_alumno` int(11) NOT NULL,
+  `asignatura` varchar(50) NOT NULL,
+  `nota` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `notas`
+--
+
+INSERT INTO `notas` (`id_alumno`, `asignatura`, `nota`) VALUES
+(1, 'Lenguaje', 55),
+(1, 'Matemáticas', 40),
+(2, 'Matemáticas', 52),
+(2, 'Lenguaje', 20),
+(2, 'Matemáticas', 70),
+(2, 'Matemáticas', 70);
 
 --
 -- Índices para tablas volcadas
@@ -202,6 +238,12 @@ ALTER TABLE `horariosbloques`
   ADD PRIMARY KEY (`id_bloque`);
 
 --
+-- Indices de la tabla `notas`
+--
+ALTER TABLE `notas`
+  ADD KEY `id_alumno` (`id_alumno`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -221,7 +263,7 @@ ALTER TABLE `docentes`
 -- AUTO_INCREMENT de la tabla `horarios`
 --
 ALTER TABLE `horarios`
-  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
