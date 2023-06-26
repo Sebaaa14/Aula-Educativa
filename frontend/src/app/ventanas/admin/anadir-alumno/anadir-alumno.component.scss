@@ -1,0 +1,75 @@
+.formulario {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+
+  .añadir-alumno{
+    box-shadow: inset 0 0 0 0.5px rgb(132, 132, 132);
+    background: linear-gradient(to right , rgba(234, 233, 233, 0.898), rgba(108, 107, 107, 0.8));
+  }
+
+  .añadir-alumno-titulo{
+    color: #000000; /* Color del texto */
+   
+    padding: 10px; /* Espaciado interno */
+    border-radius: 10px; /* Borde redondeado */
+    text-align: center;
+  }
+  
+  .formulario_grupo {
+    margin-bottom: 20px;
+  }
+  
+  .formulario_label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .formulario_input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .text-danger {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .formulario_mensaje {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  // Estilos para resaltar campos incorrectos
+  .formulario_grupo-incorrecto .formulario_input {
+    border-color: red;
+  }
+  
+  .formulario_grupo-btn-enviar{
+    text-align: center;
+  }
+
+  // Estilos para botones
+  .formulario_btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  // Estilos para el botón de "Volver"
+  .formulario_btn-volver {
+    background-color: #dc3545;
+  }
+  

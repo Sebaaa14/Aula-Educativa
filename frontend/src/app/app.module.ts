@@ -21,6 +21,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthInterceptor } from './services/AuthInterceptor/auth.interceptor.interceptor';
+import { AdminComponent } from './ventanas/admin/admin.component';
+import { AnadirAlumnoComponent } from './ventanas/admin/anadir-alumno/anadir-alumno.component';
+import { AnadirDocenteComponent } from './ventanas/admin/anadir-docente/anadir-docente.component';
+import { EliminarDocenteComponent } from './ventanas/admin/eliminar-docente/eliminar-docente.component';
+import { EliminarAlumnoComponent } from './ventanas/admin/eliminar-alumno/eliminar-alumno.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,12 @@ import { AuthInterceptor } from './services/AuthInterceptor/auth.interceptor.int
     PerfilUsuarioComponent,
     RegistrateComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    AdminComponent,
+    AnadirAlumnoComponent,
+    AnadirDocenteComponent,
+    EliminarDocenteComponent,
+    EliminarAlumnoComponent
   
   ],
   imports: [

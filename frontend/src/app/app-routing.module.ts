@@ -11,7 +11,12 @@ import { OlvidasteContrasenaComponent } from './ventanas/olvidaste-contrasena/ol
 import { ParticipantesCursoComponent } from './ventanas/participantes-curso/participantes-curso.component';
 import { PerfilUsuarioComponent } from './ventanas/perfil-usuario/perfil-usuario.component';
 import { RegistrateComponent } from './ventanas/registrate/registrate.component';
+import { AdminComponent } from './ventanas/admin/admin.component';
 import { AuthGuard } from './services/authorizationGuard/auth.guard';
+import { AnadirAlumnoComponent } from './ventanas/admin/anadir-alumno/anadir-alumno.component';
+import { EliminarAlumnoComponent } from './ventanas/admin/eliminar-alumno/eliminar-alumno.component';
+import { AnadirDocenteComponent } from './ventanas/admin/anadir-docente/anadir-docente.component';
+import { EliminarDocenteComponent } from './ventanas/admin/eliminar-docente/eliminar-docente.component';
 
 const routes: Routes = [
   //{path:'',component:},
@@ -25,7 +30,12 @@ const routes: Routes = [
   {path:'olvidaste-contrasena',component:OlvidasteContrasenaComponent},
   {path:'participantes',component:ParticipantesCursoComponent,canActivate:[AuthGuard]},
   {path:'perfil',component:PerfilUsuarioComponent,canActivate:[AuthGuard]},
-  {path:'iniciar-sesion',component:IniciarSesionComponent}
+  {path:'iniciar-sesion',component:IniciarSesionComponent},
+  {path:'admin',component:AdminComponent,canActivate:[AuthGuard]},
+  {path:'anadir-alumno',component:AnadirAlumnoComponent,canActivate:[AuthGuard]},
+  {path:'eliminar-alumno',component:EliminarAlumnoComponent,canActivate:[AuthGuard]},
+  {path:'anadir-docente',component:AnadirDocenteComponent,canActivate:[AuthGuard]},
+  {path:'eliminar-docente',component:EliminarDocenteComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

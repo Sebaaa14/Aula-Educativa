@@ -1,0 +1,127 @@
+<div class="row align-items-center">
+    <div class="añadir-alumno">
+
+        <form [formGroup]="registrateForm" class="formulario" id="formulario">
+            <h2 class="añadir-alumno-titulo">Añadir Alumno</h2>
+            <div class="formulario_grupo" id="grupo_nombre"
+                [class.formulario_grupo-incorrecto]="validarCampo('nombre')">
+                <label for="nombre" class="formulario_label">Nombre y Apellido</label>
+                <div class="formulario_grupo-input">
+                    <input type="text" class="formulario_input" formControlName="nombre" name="nombre" id="nombre"
+                        placeholder="Nombre Apellido">
+                    <p *ngIf="validarCampo('nombre')" class="text-danger">Nombre y Apellido</p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="grupo_rut" [class.formulario_grupo-incorrecto]="validarCampo('rut')">
+                <label for="rut" class="formulario_label">Rut Alumno</label>
+                <div class="formulario_grupo-input">
+                    <input type="text" class="formulario_input" formControlName="rut" name="rut" id="rut"
+                        placeholder="12345678-9">
+                    <p class="text-danger" *ngIf="validarCampo('rut')">Ingrese un rut con guión y sin puntos.</p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="grupo_curso" [class.formulario_grupo-incorrecto]="validarCampo('curso')">
+                <label for="curso" class="formulario_label">Curso Alumno</label>
+                <div class="formulario_grupo-input">
+                    <input type="text" class="formulario_input" formControlName="curso" name="curso" id="curso"
+                        placeholder="1-4º basica o media">
+                    <p class="text-danger" *ngIf="validarCampo('curso')">Ingrese el curso.</p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="grupo_colegio"
+                [class.formulario_grupo-incorrecto]="validarCampo('colegio')">
+                <label for="colegio" class="formulario_label">Nombre Colegio</label>
+                <div class="formulario_grupo-input">
+                    <input type="text" class="formulario_input" formControlName="colegio" name="colegio" id="colegio"
+                        placeholder="Establecimiento">
+                    <p class="text-danger" *ngIf="validarCampo('colegio')">Ingrese su colegio.</p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="grupo_password"
+                [class.formulario_grupo-incorrecto]="validarCampo('contrasena')">
+                <label for="password" class="formulario_label">Contraseña</label>
+                <div class="formulario_grupo-input">
+                    <input type="password" class="formulario_input" formControlName="contrasena" name="password"
+                        id="password">
+                    <p class="text-danger" *ngIf="validarCampo('contrasena')">Ingrese una contraseña entre 6-10
+                        caracteres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="grupo_password2"
+                [class.formulario_grupo-incorrecto]="validarCampo('contrasena')">
+                <label for="password2" class="formulario_label">Repetir Contraseña</label>
+                <div class="formulario_grupo-input">
+                    <input type="password" class="formulario_input" formControlName="contrasena" name="contrasena"
+                        id="contrasena">
+                    <p class="text-danger" *ngIf="validarCampo('password2')">Las contraseñas deben ser iguales.</p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="grupo_apoderado"
+                [class.formulario_grupo-incorrecto]="validarCampo('apoderado')">
+                <label for="apoderado" class="formulario_label"> Nombre Apoderado</label>
+                <div class="formulario_grupo-input">
+                    <input type="text" class="formulario_input" formControlName="apoderado" name="apoderado"
+                        id="apoderado" placeholder="Nombre Apellido">
+                    <p class="text-danger" *ngIf="validarCampo('apoderado')">Nombre y Apellido</p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="grupo_rutApoderado"
+                [class.formulario_grupo-incorrecto]="validarCampo('rutApoderado')">
+                <label for="rutApoderado" class="formulario_label">Rut Apoderado</label>
+                <div class="formulario_grupo-input">
+                    <input type="text" class="formulario_input" formControlName="rutApoderado" name="rutApoderado"
+                        id="rutApoderado" placeholder="12345678-9">
+                    <p class="text-danger" *ngIf="validarCampo('rutApoderado')">Ingrese un rut de acuerdo 12345678-9.
+                    </p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="grupo_correo"
+                [class.formulario_grupo-incorrecto]="validarCampo('correo')">
+                <label for="correo" class="formulario_label">Email</label>
+                <div class="formulario_grupo-input">
+                    <input type="email" class="formulario_input" formControlName="correo" name="correo" id="correo"
+                        placeholder="ejemplo@gmail.com">
+                    <p class="text-danger" *ngIf="validarCampo('correo')">El correo solo puede contener letras, números,
+                        puntos, guiones y guion bajo.</p>
+                </div>
+            </div>
+
+            <div class="formulario_grupo" id="grupo_telefono"
+                [class.formulario_grupo-incorrecto]="validarCampo('telefono')">
+                <label for="telefono" class="formulario_label">Teléfono (9 dígitos)</label>
+                <div class="formulario_grupo-input">
+                    <input type="text" class="formulario_input" formControlName="telefono" name="telefono" id="telefono"
+                        placeholder="123456789">
+                    <p class="text-danger" *ngIf="validarCampo('telefono')">Ingresa un número válido.</p>
+                </div>
+            </div>
+
+            <div class="formulario_mensaje" id="formulario_mensaje"
+                *ngIf="!registrateForm.valid && registrateForm.touched">
+                <p class="fas fa-exclamation-triangle"> <b>Error:</b> Por favor rellena el formulario correctamente.</p>
+            </div>
+
+
+            <div class="formulario_grupo formulario_grupo-btn-enviar">
+                <button type="submit" class="formulario_btn btn" (click)="registrate()"
+                    (keyup.enter)="registrate()">Añadir Alumno</button>
+            </div>
+
+            <div class="formulario_grupo formulario_grupo-btn-enviar">
+                <button type="button" class="formulario_btn btn" routerLink="/admin">Volver al menu de administrador</button>
+            </div>
+        </form>
+
+    </div>
+
+
+</div>

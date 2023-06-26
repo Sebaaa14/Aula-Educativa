@@ -161,7 +161,6 @@ function authenticateToken(req, res, next) {
         if (error) {
             return res.status(403).send('Token de autenticación inválido');
         }
-        // Aquí podrías realizar validaciones adicionales o cargar los datos del usuario desde la base de datos
         req.user = decoded; // Almacena la información del usuario decodificada en el objeto de solicitud
         next();
     });
@@ -301,6 +300,21 @@ app.get('/bloqueHorario', (req, res) => {
                 data: resultadoHorario
             };
             res.status(200).json(bloqueHorario);
+        }
+    });
+});
+app.delete("/eliminarAlumno/:rut_alumno", (req, res) => {
+    const alumno = req.params.rut_alumno;
+    pool.query("DELETE FROM alumnos WHERE rut_alumno = ?", [alumno], (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: "Error eliminando al alumno" });
+        }
+        else if (results.affectedRows === 0) {
+            res.status(404).json({ error: "El alumno no existe" });
+        }
+        else {
+            res.status(200).json({ message: "Alumno eliminado correctamente" });
         }
     });
 });
