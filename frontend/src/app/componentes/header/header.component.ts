@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/authorization/auth.service';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent {
     return this.authService.isAuthenticated();
   }
 
-  logout(): void {
+  cerrarSesion(): void {
     this.authService.logout();
   }
 }
