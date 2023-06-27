@@ -121,24 +121,24 @@ app.post("/registrarAlumno", (req: any, res: any) => {
 
 //Registrar docente
 app.post("/registrarDocente", (req: any, res: any) => {
-    const { nombre, email, horario,rol } = req.body;
-            pool.query(
-                "insert into docentes (nombre,email,horario,rol) VALUES (?,?,?,?)",
-                [nombre,email,horario,rol],
-                (error: any, results: any) => {
-                    if (error) {
-                        console.error(error);
-                        res.status(500).send("error insertando en el server :c");
-                    } else {
-                        const response = {
-                            status: 'exito',
-                            message: 'se insertaron los datos bien',
-                            data: results
-                        }
-                        res.status(200).json(response);
-                    }
+    const { nombre, email, horario, rol } = req.body;
+    pool.query(
+        "insert into docentes (nombre,email,horario,rol) VALUES (?,?,?,?)",
+        [nombre, email, horario, rol],
+        (error: any, results: any) => {
+            if (error) {
+                console.error(error);
+                res.status(500).send("error insertando en el server :c");
+            } else {
+                const response = {
+                    status: 'exito',
+                    message: 'se insertaron los datos bien',
+                    data: results
                 }
-            );
+                res.status(200).json(response);
+            }
+        }
+    );
 });
 
 //Post para iniciar sesion
@@ -162,6 +162,15 @@ app.post("/iniciarSesion", (req: any, res: any) => {
                     data: admin,
                     token: jwt.sign({ rut_alumno, rol: "admin" }, secretKey, { expiresIn: '1h' })
                 };
+
+                const fechaActual: Date = new Date();
+                pool.query(
+                    "INSERT INTO login (id_admin , hora, token) VALUES (?,?,?)",
+                    [admin.id_admin, fechaActual, response.token],
+                    function (error: any, results: any, fields: any) {
+                        console.log("Datos insertados en la tabla log ADMIN");
+                    }
+                );
                 res.status(200).json(response);
             } else {
                 // No es un administrador, verificar como usuario normal
@@ -185,12 +194,12 @@ app.post("/iniciarSesion", (req: any, res: any) => {
                                 } else if (!isMatch) {
                                     res.status(400).send("La clave ingresada es incorrecta");
                                 } else {
-                                    
+
                                     const response = {
                                         status: "exito",
                                         message: "Inicio de sesión exitoso",
                                         data: alumno,
-                                        token: jwt.sign({ rut_alumno, rol:"usuario" }, secretKey, { expiresIn: '1h' })
+                                        token: jwt.sign({ rut_alumno, rol: "usuario" }, secretKey, { expiresIn: '1h' })
                                     };
 
                                     // Para insertar en la tabla de login
@@ -373,41 +382,41 @@ app.get('/bloqueHorario', (req: any, res: any) => {
 });
 
 //Eliminar alumno
-app.delete("/eliminarAlumno/:rut_alumno", (req:any, res:any) => {
+app.delete("/eliminarAlumno/:rut_alumno", (req: any, res: any) => {
     const alumno = req.params.rut_alumno;
     pool.query(
-      "DELETE FROM alumnos WHERE rut_alumno = ?",
-      [alumno],
-      (error:any, results:any) => {
-        if (error) {
-          console.error(error);
-          res.status(500).json({ error: "Error eliminando al alumno" });
-        } else if (results.affectedRows === 0) {
-          res.status(404).json({ error: "El alumno no existe" });
-        } else {
-          res.status(200).json({ message: "Alumno eliminado correctamente" });
+        "DELETE FROM alumnos WHERE rut_alumno = ?",
+        [alumno],
+        (error: any, results: any) => {
+            if (error) {
+                console.error(error);
+                res.status(500).json({ error: "Error eliminando al alumno" });
+            } else if (results.affectedRows === 0) {
+                res.status(404).json({ error: "El alumno no existe" });
+            } else {
+                res.status(200).json({ message: "Alumno eliminado correctamente" });
+            }
         }
-      }
     );
-  });
-  
-  //Eliminar docente
-  app.delete("/eliminarDocente/:id_profesor", (req:any, res:any) => {
+});
+
+//Eliminar docente
+app.delete("/eliminarDocente/:id_profesor", (req: any, res: any) => {
     const docente = req.params.id_profesor;
     console.log(docente);
     pool.query(
-      "DELETE FROM docentes WHERE id_profesor = ?",
-      [docente],
-      (error:any, results:any) => {
-        if (error) {
-          console.error(error);
-          res.status(500).json({ error: "Error eliminando al docente" });
-        } else if (results.affectedRows === 0) {
-          res.status(404).json({ error: "El docente no existe" });
-        } else {
-          res.status(200).json({ message: "Docente eliminado correctamente" });
+        "DELETE FROM docentes WHERE id_profesor = ?",
+        [docente],
+        (error: any, results: any) => {
+            if (error) {
+                console.error(error);
+                res.status(500).json({ error: "Error eliminando al docente" });
+            } else if (results.affectedRows === 0) {
+                res.status(404).json({ error: "El docente no existe" });
+            } else {
+                res.status(200).json({ message: "Docente eliminado correctamente" });
+            }
         }
-      }
     );
-  });
-  
+});
+

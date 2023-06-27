@@ -1,16 +1,11 @@
-.imagen-homepage {
-    background-image: url("/assets/fondos/escuela.jpeg");
-    background-position: center center;
-    background-size: cover;
-    min-height: 99vh;
-}
 .background-mainpage {
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 5%;
     color: white;
     word-wrap: break-word;
-}
-
+    max-width: 96%; // Ajusta el valor según sea necesario
+  }
+  
 .imagen {
     background-image: url("/assets/fondos/fondo_sin_registrar.png");
     background-position: center center;

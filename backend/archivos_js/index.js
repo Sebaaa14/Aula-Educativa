@@ -146,6 +146,10 @@ app.post("/iniciarSesion", (req, res) => {
                 data: admin,
                 token: jwt.sign({ rut_alumno, rol: "admin" }, secretKey, { expiresIn: '1h' })
             };
+            const fechaActual = new Date();
+            pool.query("INSERT INTO login (id_admin , hora, token) VALUES (?,?,?)", [admin.id_admin, fechaActual, response.token], function (error, results, fields) {
+                console.log("Datos insertados en la tabla log ADMIN");
+            });
             res.status(200).json(response);
         }
         else {

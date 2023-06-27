@@ -2,47 +2,45 @@
   <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(to bottom , rgba(18, 55, 43, 0.8), rgba(16, 211, 172, 0.9));">
     <div class="container justify-content-center">
       <div class="col-4 col-lg-2 d-flex align-items-center justify-content-start">
-        <a routerLink=""><h4 style="color: white;">Aula Educativa</h4></a>
-      </div>      
+        <a style="text-decoration: none;
+        color: white;" routerLink=""><h4 style="color: white;">Aula Educativa</h4></a>
+      </div>
       <div class="col-4 col-lg-2 text-center">
         <a *ngIf="!sesionIniciada()" routerLink="">
           <img src="assets\img_header\logo_sin_registrar.png" width="15%" height="auto" class="d-inline-block align-top" alt="Logo">
         </a>
       </div>
-      <div class="col-4 col-lg-8 text-right">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="col-4 col-lg-8 text-center">
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mx-auto mx-lg-2">
             <li class="nav-item">
-              <button *ngIf="!sesionIniciada()" class="btn btn-outline-success" type="submit" routerLink="iniciar-sesion">Iniciar Sesión</button>
+              <button *ngIf="!sesionIniciada()" class="btn btn-outline-success btn-sm" type="submit" routerLink="iniciar-sesion">Iniciar Sesión</button>
             </li>
-
-            <!-- Momentaneas -->
+            <!-- Resto de elementos del menú -->
             <li class="nav-item">
-              <button *ngIf="sesionIniciada()" class="btn rounded-pill py-2 px-4 shadow-sm" type="submit" routerLink="admin">Admin</button>
+              <button *ngIf="sesionIniciada()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="home">Home</button>
             </li>
-
             <li class="nav-item">
-              <button *ngIf="sesionIniciada()" class="btn  rounded-pill py-2 px-4 shadow-sm" type="submit" routerLink="home">Home</button>
+              <button *ngIf="eresAdmin()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="admin">Admin</button>
             </li>
-            <!-- Momentanes -->
-
+            
             <li class="nav-item">
-              <button *ngIf="sesionIniciada()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="horario">Horario</button>
+              <button *ngIf="sesionIniciada() && !eresAdmin()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="horario">Horario</button>
             </li>
             <li class="nav-item" >
-              <button *ngIf="sesionIniciada()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="notas">Notas</button>
+              <button *ngIf="sesionIniciada() && !eresAdmin()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="notas">Notas</button>
             </li>
             <li class="nav-item">
-              <button *ngIf="sesionIniciada()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="docentes">Docentes</button>
+              <button *ngIf="sesionIniciada() " class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="docentes">Docentes</button>
             </li>
             <li class="nav-item">
-              <button *ngIf="sesionIniciada()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="participantes">Participantes</button>
+              <button *ngIf="sesionIniciada() && !eresAdmin()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="participantes">Participantes</button>
             </li>
             <li class="nav-item">
-              <button *ngIf="sesionIniciada()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="perfil">Perfil</button>
+              <button *ngIf="sesionIniciada() && !eresAdmin()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="perfil">Perfil</button>
             </li>
             <li class="nav-item">
               <button *ngIf="sesionIniciada()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" style="width: 150px;" type="submit" (click)="cerrarSesion()">Cerrar Sesión</button>

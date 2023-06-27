@@ -15,6 +15,10 @@ export class HeaderComponent {
     return this.authService.isAuthenticated();
   }
 
+  eresAdmin():boolean{
+    return this.authService.isAdmin();
+  }
+
   cerrarSesion(): void {
     this.authService.logout();
     alert("Sesion caducada");
