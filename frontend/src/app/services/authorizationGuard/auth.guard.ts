@@ -10,16 +10,25 @@ export class AuthGuard implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.authService.isAuthenticated()) {
+      console.log('Autentificado');
+
+      // Verificar si se requiere rol de administrador
+      if (next.data['roles'] && next.data['roles'].includes('admin')) {
+        if (this.authService.isAdmin()) {
+          console.log('Eres admin');
+          return true;
+        } else {
+          console.log('No eres admin');
+          this.router.navigate(['/home']);
+          return false;
+        }
+      }
+
       return true;
     } else {
-      const token = this.authService.getToken();
-      console.log(token);
-      if (token) {
-        return true;
-      } else {
-        this.router.navigate(['/iniciar-sesion']); // Redireccionar al usuario a la página de inicio de sesión
-        return false;
-      }
+      console.log('No autentificado');
+      this.router.navigate(['/iniciar-sesion']);
+      return false;
     }
   }
 }

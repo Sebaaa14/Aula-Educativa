@@ -26,6 +26,8 @@ import { AnadirAlumnoComponent } from './ventanas/admin/anadir-alumno/anadir-alu
 import { AnadirDocenteComponent } from './ventanas/admin/anadir-docente/anadir-docente.component';
 import { EliminarDocenteComponent } from './ventanas/admin/eliminar-docente/eliminar-docente.component';
 import { EliminarAlumnoComponent } from './ventanas/admin/eliminar-alumno/eliminar-alumno.component';
+import { AdminGuard } from './services/adminguard/admin.guard';
+import { AuthService } from './services/authorization/auth.service';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { EliminarAlumnoComponent } from './ventanas/admin/eliminar-alumno/elimin
     HttpClientModule
   ],
   providers: [
+    AdminGuard,
     CookieService,{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

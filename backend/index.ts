@@ -145,46 +145,74 @@ app.post("/registrarDocente", (req: any, res: any) => {
 app.post("/iniciarSesion", (req: any, res: any) => {
     const { rut_alumno, contrasena } = req.body;
 
+    // Verificar si es administrador
     pool.query(
-        "SELECT * FROM alumnos WHERE rut_alumno = ?",
-        [rut_alumno],
+        "SELECT * FROM administradores WHERE rut = ? AND contrasena = ?",
+        [rut_alumno, contrasena],
         (error: any, results: any) => {
             if (error) {
                 console.error(error);
-                res.status(500).send("error consultando en el servidor");
-            } else if (results.length === 0) {
-                res.status(404).send("El alumno no existe");
+                res.status(500).send("Error consultando en el servidor");
+            } else if (results.length > 0) {
+                // Es un administrador
+                const admin = results[0];
+                const response = {
+                    status: "exito",
+                    message: "Inicio de sesión exitoso como administrador",
+                    data: admin,
+                    token: jwt.sign({ rut_alumno, rol: "admin" }, secretKey, { expiresIn: '1h' })
+                };
+                res.status(200).json(response);
             } else {
-                const alumno = results[0];
+                // No es un administrador, verificar como usuario normal
+                pool.query(
+                    "SELECT * FROM alumnos WHERE rut_alumno = ?",
+                    [rut_alumno],
+                    (error: any, results: any) => {
+                        if (error) {
+                            console.error(error);
+                            res.status(500).send("Error consultando en el servidor");
+                        } else if (results.length === 0) {
+                            res.status(404).send("El alumno no existe");
+                        } else {
+                            const alumno = results[0];
 
-                // Comparar la contraseña ingresada con el hash almacenado en la base de datos
-                bcrypt.compare(contrasena, alumno.contrasena, (compareError: any, isMatch: boolean) => {
-                    if (compareError) {
-                        console.error(compareError);
-                        res.status(500).send("error comparando las claves");
-                    } else if (!isMatch) {
-                        res.status(400).send("La clave ingresada es incorrecta");
-                    } else {
-                        const response = {
-                            status: "exito",
-                            message: "Inicio de sesión exitoso",
-                            data: alumno,
-                            token: jwt.sign({ rut_alumno }, secretKey, { expiresIn: '1h' }) // Agrega el token al objeto de respuesta
-                        };
+                            // Comparar la contraseña ingresada con el hash almacenado en la base de datos
+                            bcrypt.compare(contrasena, alumno.contrasena, (compareError: any, isMatch: boolean) => {
+                                if (compareError) {
+                                    console.error(compareError);
+                                    res.status(500).send("Error comparando las claves");
+                                } else if (!isMatch) {
+                                    res.status(400).send("La clave ingresada es incorrecta");
+                                } else {
+                                    const response = {
+                                        status: "exito",
+                                        message: "Inicio de sesión exitoso",
+                                        data: alumno,
+                                        token: jwt.sign({ rut_alumno, rol:"usuario" }, secretKey, { expiresIn: '1h' })
+                                    };
 
-                        //para insertar en la tabla de login
-                        const fechaActual: Date = new Date();
-                        pool.query("insert into login (id_alumno, hora,token) VALUES (?,?,?)", [alumno.id_alumno, fechaActual, response.token], function (error: any, results: any, fields: any) {
-                            console.log("Datos insertados en la tabla log");
-                        });
+                                    // Para insertar en la tabla de login
+                                    const fechaActual: Date = new Date();
+                                    pool.query(
+                                        "INSERT INTO login (id_alumno, hora, token) VALUES (?,?,?)",
+                                        [alumno.id_alumno, fechaActual, response.token],
+                                        function (error: any, results: any, fields: any) {
+                                            console.log("Datos insertados en la tabla log");
+                                        }
+                                    );
 
-                        res.status(200).json(response);
+                                    res.status(200).json(response);
+                                }
+                            });
+                        }
                     }
-                });
+                );
             }
         }
     );
 });
+
 
 
 // Middleware para autenticación
