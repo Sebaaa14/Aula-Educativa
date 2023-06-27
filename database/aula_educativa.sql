@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2023 a las 07:52:55
+-- Tiempo de generación: 27-06-2023 a las 02:57:03
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `aula_educativa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `administradores`
+--
+
+CREATE TABLE `administradores` (
+  `id_admin` int(11) NOT NULL,
+  `rut` varchar(255) NOT NULL,
+  `contrasena` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `administradores`
+--
+
+INSERT INTO `administradores` (`id_admin`, `rut`, `contrasena`) VALUES
+(1, '10101010-1', 'admin1');
 
 -- --------------------------------------------------------
 
@@ -47,17 +66,7 @@ CREATE TABLE `alumnos` (
 INSERT INTO `alumnos` (`id_alumno`, `nombre`, `rut_alumno`, `curso`, `colegio`, `contrasena`, `apoderado`, `rut_apoderado`, `email`, `telefono`) VALUES
 (1, 'Nathalia Trigo', '20919909-2', '4º', 'El Olivar', '$2b$04$QtbIwUzEheu/umBvDDWEmesH4UQi.P33rIs7JCeKOqJNWzh/55QqS', 'Diego Duran', '1356478-2', 'nathaliatrigo@gmail.com', '976789234'),
 (2, 'Sebastián Valdés', '20986948-9', '5º', 'Forestal', '$2b$04$xuHVdOHZx1hyXlH5YQnSEeQZWo9YVnlwdIoOwgNhBvFmLoTzZR2iS', 'Matías Fernández', '15560982-7', 'juancitoperez@gmail.com', '971972252'),
-(3, 'Elpepe', '20986948-5', '5º', 'Ñuñoacity', '$2b$04$xjpjYXF3PEDtXkDcNuCcD.S91cr2rIhopK1av0IJXXjDuHxCcao9S', 'El juancin', '15560875.3', 'pepinbombin@gmail.com', '971971242'),
-(4, 'housh nasi', '15560328-3', '4º', 'El santiago', '$2b$04$vpn1.cMjnW7M8qXxObcLPuk2N5Ak7Q39a.R7/suRRmCuPH9F9gQ1K', 'Juanito alcachofa', '20986948-9', 'sebastian@gmail.com', '123456789'),
-(5, 'housh nasi', '15560328-3', '4º', 'El santiago', '$2b$04$Kw5PYq6KyqQxQGK5LWou2uydo3LsloSagNRVeSmW66yIONq/fNm32', 'Juanito alcachofa', '20986948-9', 'sebastian@gmail.com', '123456789'),
-(6, 'housh nasi', '15560328-3', '4º', 'El santiago', '$2b$04$o3fJ82M5ZKnCLFWp34yigeEF5ahGPQmZVmFI27tQBkzTZmnmjTe4i', 'Juanito alcachofa', '20986948-9', 'sebastian@gmail.com', '123456789'),
-(7, 'housh nasi', '15560328-3', '4º', 'El santiago', '$2b$04$YfDt6qy1sMcLfZN/0/NYnemNPo2uXANTUwYsOe8g5ZwbpEh3afFii', 'Juanito alcachofa', '20986948-9', 'sebastian@gmail.com', '123456789'),
-(8, 'housh nasi', '15560328-3', '4º', 'El santiago', '$2b$04$c4I732QlRrpXhi/FkkJ53.4VQVzKSRaaIWlFOim2pTkfsBrauVE1K', 'Juanito alcachofa', '20986948-9', 'sebastian@gmail.com', '123456789'),
-(9, 'housh nasi', '15560328-3', '4º', 'El santiago', '$2b$04$7NxJ4BR8tBuN1V/aCjhXs.dqAl8L9idjmbvavPk87Ft7Srzs40mnW', 'Juanito alcachofa', '20986948-9', 'sebastian@gmail.com', '123456789'),
-(10, 'housh nasi', '15560328-3', '4º', 'El santiago', '$2b$04$hPsu4I82XvbH.amoD7vKhue/rd0x0x2yf32R3jh/nawVZj.4KxZgG', 'Juanito alcachofa', '20986948-9', 'sebastian@gmail.com', '123456789'),
-(11, 'housh nasi', '15560328-3', '4º', 'El santiago', '$2b$04$H0kTA3UD1a4qYKNmiP6ZoOiWfqIh5U3/.SCwXNkqfTcJqUS990dyy', 'Juanito alcachofa', '20986948-9', 'sebastian@gmail.com', '123456789'),
-(12, 'housh nasi', '15560328-3', '4º', 'El santiago', '$2b$04$VlkfhL2Jf9h8N5bAQ/eyPuqIHU.dcJY.t7Q8/a446NmH1DQdS7bsW', 'Juanito alcachofa', '20986948-9', 'sebastian@gmail.com', '123456789'),
-(13, 'matias tilin', '209869848-9', '4º', 'sdasdsa', '$2b$04$ShhPnGJzyV44VlFPa.J0PO9owMg59QwlWsnkBkV6boslOe68vCQgu', 'sdasd asdas', '123456489-9', 'asdas@gmail.com', '123456789');
+(3, 'Elpepe', '20986948-5', '5º', 'Ñuñoacity', '$2b$04$xjpjYXF3PEDtXkDcNuCcD.S91cr2rIhopK1av0IJXXjDuHxCcao9S', 'El juancin', '15560875.3', 'pepinbombin@gmail.com', '971971242');
 
 -- --------------------------------------------------------
 
@@ -82,8 +91,9 @@ INSERT INTO `docentes` (`id_profesor`, `nombre`, `email`, `horario`, `rol`) VALU
 (2, 'Mario Orellana', 'mario.orellana@mail.edu.cl', 'Lunes a Jueves 12.30 - 13.30', 'Profesor de Historia'),
 (3, 'José Zamudio', 'jose.zamudio@mail.edu.cl', 'Lunes 16:30 - 18.30', 'Profesor de Filosofía'),
 (4, 'Juan José Mora', 'juanjose.mora@mail.edu.cl', 'Lunes y Martes 14:30 - 15:30', 'Profesor de Educación Física'),
-(5, 'Nicolás Castellón', 'nicolas.castellon@mail.edu.cl', 'Martes a Jueves 14:30 - 15:30', 'Martes a Jueves 14:30 - 15:30'),
-(6, 'Juliana Valdivieso', 'juliana.valdivieso@mail.edu.cl', 'Jueves 13:00 - 15:30', 'Profesora de Física');
+(5, 'Nicolás Castellón', 'nicolas.castellon@mail.edu.cl', 'Martes a Jueves 14:30 - 15:30', 'Profesor de Ingles'),
+(6, 'Juliana Valdivieso', 'juliana.valdivieso@mail.edu.cl', 'Jueves 13:00 - 15:30', 'Profesora de Física'),
+(8, 'Martina perez', 'martina.perez@mail.edu.cl', 'Lunes a viernes 14:30', 'Profesor jefe');
 
 -- --------------------------------------------------------
 
@@ -181,7 +191,39 @@ INSERT INTO `login` (`id_alumno`, `hora`, `token`) VALUES
 (2, '2023-06-26 01:49:09.103', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1ODU0OSwiZXhwIjoxNjg3NzYyMTQ5fQ.YGzNHES6Ov_7VswlUruUqB-YT4sceryn5UQr018cjrg'),
 (2, '2023-06-26 01:50:43.090', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1ODY0MywiZXhwIjoxNjg3NzYyMjQzfQ.neCW4nKCAcPL1itugsb0cOecZ-8pePCcEFa4cJUZpwI'),
 (2, '2023-06-26 01:51:11.266', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1ODY3MSwiZXhwIjoxNjg3NzYyMjcxfQ.pMXsRA5_3_kKCrHgSxP27XNYhdP_eOEiAV9wv34AHUA'),
-(2, '2023-06-26 01:52:27.855', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1ODc0NywiZXhwIjoxNjg3NzYyMzQ3fQ.YFr1Hs9qJP-dcj8QnkKUAHnwDSgH7FOFgyhwQqevmmA');
+(2, '2023-06-26 01:52:27.855', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc1ODc0NywiZXhwIjoxNjg3NzYyMzQ3fQ.YFr1Hs9qJP-dcj8QnkKUAHnwDSgH7FOFgyhwQqevmmA'),
+(2, '2023-06-26 12:04:53.595', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc5NTQ5MywiZXhwIjoxNjg3Nzk5MDkzfQ.-cLyfomaiU0xY3ffo5jinsfDoDuPy2i3PoDbTwZ2jSU'),
+(2, '2023-06-26 12:16:36.453', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc5NjE5NiwiZXhwIjoxNjg3Nzk5Nzk2fQ.JRlUH0FwROpLIkB1m3KfaApU_CyAg5jqCY1gN8w1sKQ'),
+(2, '2023-06-26 12:22:34.330', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4Nzc5NjU1NCwiZXhwIjoxNjg3ODAwMTU0fQ.Nkb3NCE-4IH6ylxG1xxQsyCqdyoPTRmsBRx2waWWffU'),
+(2, '2023-06-26 14:42:51.989', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgwNDk3MSwiZXhwIjoxNjg3ODA4NTcxfQ.DdQkoN3dWk6XHb62_dN9X1zmg8w5wG5Z87CW1lnu3ec'),
+(2, '2023-06-26 17:54:27.567', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgxNjQ2NywiZXhwIjoxNjg3ODIwMDY3fQ.SRjdFtTj81jMpe3VMIQDZ0xufEonneN_hYLfUVvxqzc'),
+(2, '2023-06-26 17:58:24.242', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgxNjcwNCwiZXhwIjoxNjg3ODIwMzA0fQ.8Hm2OCPVVX7GBeyOBQ02LP0Ye7CVIkIfRHSVb4NY_Eo'),
+(2, '2023-06-26 18:37:11.474', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgxOTAzMSwiZXhwIjoxNjg3ODIyNjMxfQ.O49wZScPaWqlEMmi0AYdOYTUE7Mz7rv0nys9Lut9jo0'),
+(2, '2023-06-26 18:38:21.426', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgxOTEwMSwiZXhwIjoxNjg3ODIyNzAxfQ.Jn_POKWR0LQ8-7a2GlG5kjE9qunVZ2M0XipJ_ZD3gmU'),
+(2, '2023-06-26 18:41:18.730', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgxOTI3OCwiZXhwIjoxNjg3ODIyODc4fQ.VO5ZjjIgunkY51BZg_Y9D81dZwrPIqwLsbTB95kN8ZI'),
+(2, '2023-06-26 18:54:45.675', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMDA4NSwiZXhwIjoxNjg3ODIzNjg1fQ.Li2rbDH5HjqmJ1RGe3Kie1u-dQbAF_g6ssgOMfeQo0U'),
+(2, '2023-06-26 19:09:22.432', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMDk2MiwiZXhwIjoxNjg3ODI0NTYyfQ.e-3J0yxlX802EnE7s5LrQV2YhPdjnguMHJy1r728X4o'),
+(2, '2023-06-26 19:13:19.135', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMTE5OSwiZXhwIjoxNjg3ODI0Nzk5fQ.9IM-t1I29vqWP3lb5kZKCdwpXQnG7dXCMoEhpQHItaU'),
+(2, '2023-06-26 19:14:18.052', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMTI1OCwiZXhwIjoxNjg3ODI0ODU4fQ.rMIp78VWkM_T4AJkzKEG5EfG-oeuEoft2APyJ3YM2Dc'),
+(2, '2023-06-26 19:15:07.490', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMTMwNywiZXhwIjoxNjg3ODI0OTA3fQ.Pez09-RSqg38UzHZIhWPCXWRHzdejCO9U8hJ1X8QAJY'),
+(2, '2023-06-26 19:21:39.233', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMTY5OSwiZXhwIjoxNjg3ODI1Mjk5fQ.lq7ppVTVA3td6KrEJWeV7Nl-DLbL5l835U0h52UZR_8'),
+(2, '2023-06-26 19:24:56.218', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMTg5NiwiZXhwIjoxNjg3ODI1NDk2fQ.hSWS1S2rm596TnhR1_rVelaUS1J2KNS8cuUO2al4GJs'),
+(2, '2023-06-26 19:27:20.792', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMjA0MCwiZXhwIjoxNjg3ODI1NjQwfQ.t4ttyaDmjg-HYmP6kGnbmO9dct6oIHys_0vkkLW2FKk'),
+(2, '2023-06-26 19:29:32.871', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMjE3MiwiZXhwIjoxNjg3ODI1NzcyfQ.hyyPTX67StPL3KYDkZCZWnzVgWIqCRQe1k0p48cvDsc'),
+(2, '2023-06-26 19:30:07.564', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMjIwNywiZXhwIjoxNjg3ODI1ODA3fQ.-RmrpqsfeJqfrHxuO506sy9PpumqJv6DswuCoVxW7BQ'),
+(2, '2023-06-26 19:56:20.245', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyMzc4MCwiZXhwIjoxNjg3ODI3MzgwfQ.fDUx82lsb4v3v6xx-hQWnx8FE6Q_UmPrg3qI-6OGC9s'),
+(2, '2023-06-26 20:01:19.900', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyNDA3OSwiZXhwIjoxNjg3ODI3Njc5fQ.7_fhTuOyXVKJLuLh4WJRSvfRd0alxcNll-SUwH6xbUQ'),
+(2, '2023-06-26 20:04:39.172', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsImlhdCI6MTY4NzgyNDI3OSwiZXhwIjoxNjg3ODI3ODc5fQ.Oe2i5haxIQVKsRn4vBpgY7uMCtYzfhVikUxc84bL-IA'),
+(2, '2023-06-26 20:09:28.813', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsInJvbGUiOiJ1c3VhcmlvIiwiaWF0IjoxNjg3ODI0NTY4LCJleHAiOjE2ODc4MjgxNjh9.w1ilJYgSj8qPmk0kPLWV3psjCLdfSRf9oOPhv6cTwK4'),
+(2, '2023-06-26 20:13:45.284', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsInJvbGUiOiJ1c3VhcmlvIiwiaWF0IjoxNjg3ODI0ODI1LCJleHAiOjE2ODc4Mjg0MjV9.kxNqlPNp4LG8rC7DCDa6wj86nUBH73zP0IUuKo0NJTY'),
+(2, '2023-06-26 20:13:46.744', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsInJvbGUiOiJ1c3VhcmlvIiwiaWF0IjoxNjg3ODI0ODI2LCJleHAiOjE2ODc4Mjg0MjZ9.o6ZwaxIo1BEYpHWOeEZxGEitVuWxqxy86vPynlLiwJ0'),
+(2, '2023-06-26 20:19:19.140', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsInJvbGUiOiJ1c3VhcmlvIiwiaWF0IjoxNjg3ODI1MTU5LCJleHAiOjE2ODc4Mjg3NTl9.gRtHeD4K3LwCCw_iCluysPVgrEq1JvucfDge7wCmEqk'),
+(2, '2023-06-26 20:22:13.471', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE2ODc4MjUzMzMsImV4cCI6MTY4NzgyODkzM30.hYVB2SAfTcE2cHi7BC6OmaSxT1AaQGEgZXMtkz3GJ4w'),
+(2, '2023-06-26 20:23:13.221', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE2ODc4MjUzOTMsImV4cCI6MTY4NzgyODk5M30.1sIuIxDgD2AJpioveoxKSkqnneEupYWuu_f2wof4l7U'),
+(2, '2023-06-26 20:24:16.361', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE2ODc4MjU0NTYsImV4cCI6MTY4NzgyOTA1Nn0.-QQiaIoZeN0uohtqnKQ1vRQ9q5NTmAAhvdAh23JcnEk'),
+(2, '2023-06-26 20:28:54.325', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE2ODc4MjU3MzQsImV4cCI6MTY4NzgyOTMzNH0.vhU7U6Mr2EuRxfhcGbGGUNmLKO95Gif2j1vYxM3CHng'),
+(2, '2023-06-26 20:52:07.449', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE2ODc4MjcxMjcsImV4cCI6MTY4NzgzMDcyN30.55R59fTOUUHEQuhEndngskIoURVEKG6b4PPVBv95fpo'),
+(2, '2023-06-26 20:55:57.018', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJydXRfYWx1bW5vIjoiMjA5ODY5NDgtOSIsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE2ODc4MjczNTcsImV4cCI6MTY4NzgzMDk1N30.1ZAX5KZAZwMpGUF5of5f5pMtPaoeE3VkE379O5ynGx0');
 
 -- --------------------------------------------------------
 
@@ -210,6 +252,12 @@ INSERT INTO `notas` (`id_alumno`, `asignatura`, `nota`) VALUES
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `administradores`
+--
+ALTER TABLE `administradores`
+  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indices de la tabla `alumnos`
@@ -248,16 +296,22 @@ ALTER TABLE `notas`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `administradores`
+--
+ALTER TABLE `administradores`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id_alumno` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_alumno` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `docentes`
 --
 ALTER TABLE `docentes`
-  MODIFY `id_profesor` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_profesor` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
