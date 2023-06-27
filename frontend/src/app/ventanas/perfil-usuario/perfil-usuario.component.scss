@@ -7,3 +7,14 @@ section p {
     font-size: 30px;
     padding-bottom: 20px;
   }
+
+  .col-md-4 {
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  
+  .col-md-4 img {
+    width: 70%;
+  }
+  

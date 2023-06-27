@@ -1,11 +1,65 @@
-.background-mainpage {
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 5%;
+.container {
+    padding-top: 50px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.card {
+    border: 1px solid #101f86;
     color: white;
-    word-wrap: break-word;
-    max-width: 96%; // Ajusta el valor según sea necesario
-  }
-  
+    border-radius: 10px;
+    padding: 20px;
+    background: linear-gradient(to bottom , rgb(18, 55, 43), rgb(16, 211, 172));
+}
+
+.card-body {
+    padding: 0;
+}
+
+.card h2,
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 20px;
+}
+
+.card a.btn {
+    text-decoration: none;
+}
+
+.card a.btn-primary {
+    background-color: #195d44;
+    color: #ffffff;
+}
+
+.card a.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.offset-md-4 {
+    margin-left: 33.3333%;
+}
+
+@media (max-width: 767.98px) {
+    .offset-md-4 {
+        margin-left: 0;
+    }
+}
+
 .imagen {
     background-image: url("/assets/fondos/fondo_sin_registrar.png");
     background-position: center center;
