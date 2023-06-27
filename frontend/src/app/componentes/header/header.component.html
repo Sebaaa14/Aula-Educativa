@@ -28,19 +28,19 @@
             </li>
             
             <li class="nav-item">
-              <button *ngIf="sesionIniciada() && !eresAdmin()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="horario">Horario</button>
+              <button *ngIf="sesionIniciada() " class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="horario">Horario</button>
             </li>
             <li class="nav-item" >
-              <button *ngIf="sesionIniciada() && !eresAdmin()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="notas">Notas</button>
+              <button *ngIf="sesionIniciada() " class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="notas">Notas</button>
             </li>
             <li class="nav-item">
               <button *ngIf="sesionIniciada() " class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="docentes">Docentes</button>
             </li>
             <li class="nav-item">
-              <button *ngIf="sesionIniciada() && !eresAdmin()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="participantes">Participantes</button>
+              <button *ngIf="sesionIniciada() " class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="participantes">Participantes</button>
             </li>
             <li class="nav-item">
-              <button *ngIf="sesionIniciada() && !eresAdmin()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="perfil">Perfil</button>
+              <button *ngIf="sesionIniciada() " class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" type="submit" routerLink="perfil">Perfil</button>
             </li>
             <li class="nav-item">
               <button *ngIf="sesionIniciada()" class="btn rounded-pill py-2 px-4 shadow-sm btn-sm" style="width: 150px;" type="submit" (click)="cerrarSesion()">Cerrar Sesión</button>
