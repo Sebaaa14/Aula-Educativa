@@ -8,6 +8,7 @@ import { AuthService } from '../authorization/auth.service';
 })
 export class AdminGuard implements CanActivateChild {
   constructor(private authService: AuthService, private router: Router) {}
+  
 
   canActivateChild(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     console.log('Entering canActivateChild in AdminGuard');

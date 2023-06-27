@@ -185,6 +185,7 @@ app.post("/iniciarSesion", (req: any, res: any) => {
                                 } else if (!isMatch) {
                                     res.status(400).send("La clave ingresada es incorrecta");
                                 } else {
+                                    
                                     const response = {
                                         status: "exito",
                                         message: "Inicio de sesión exitoso",
